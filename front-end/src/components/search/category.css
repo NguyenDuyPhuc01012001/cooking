@@ -1,0 +1,68 @@
+.wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.body__container {
+	display: flex;
+	flex-direction: column;
+	width: 1012px;
+	margin-top: 12px;
+}
+
+.grid_recipes {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 2rem;
+	justify-content: center;
+}
+.not_found_recipe {
+	grid-column: 1 / span 3;
+}
+.card_recipe img {
+	object-fit: cover;
+	height: 15rem;
+	border-radius: 2rem;
+}
+.card_recipe a {
+	text-decoration: none;
+}
+.card_recipe h5 {
+	text-align: center;
+	padding: 1rem;
+}
+.center {
+	text-align: center;
+}
+.pagination {
+	display: inline-block;
+	margin-top: 24px;
+}
+.pagination li {
+	display: inline-block;
+}
+
+.pagination a {
+	color: #3eadcf;
+	float: left;
+	padding: 3px 10px;
+	text-decoration: none;
+	transition: background-color 0.3s;
+	border: 1px solid #ddd;
+	margin: 0 4px;
+	border-radius: 5px;
+	border: 1px solid #3eadcf;
+	background-color: white;
+	cursor: pointer;
+}
+
+.pagination li.active a {
+	background-color: #000;
+	color: white;
+	border: 1px solid #3eadcf;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}

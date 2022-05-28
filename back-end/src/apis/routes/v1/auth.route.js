@@ -14,9 +14,9 @@ router.post(
     authController.login
 )
 router.post('/register', validate(authValidation.registerSchema), authController.register)
-router.post('/sendverificationemail', passport.authenticate('jwt', { session: false }), authController.sendVerificationEmail)
+router.post('/sendVerificationEmail', passport.authenticate('jwt', { session: false }), authController.sendVerificationEmail)
 router.post('/activate/', validate(authValidation.activateEmailTokenSchema), authController.activateEmailToken)
-router.post('/updateemail', authController.updateEmail)
+router.post('/updateEmail', authController.updateEmail)
 router.post('/forgot', authController.forgotPassword)
 router.post('/reset/', validate(authValidation.resetPasswordTokenSchema), authController.resetPassword)
 

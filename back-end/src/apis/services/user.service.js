@@ -5,17 +5,13 @@ const { User, Liked, RealEstate } = require('../models')
 const env = require('../../configs/env')
 
 const getUsers = async (querySearch) => {
-    console.log(querySearch)
-    const { sort, page, userID, role } = querySearch
+    const { sort, page, name, role } = querySearch
     // Filter
     let formSearch = {}
-    if (userID && userID != 'all') {
-        formSearch['_id'] = userID
+    if (name && name != 'all') {
+        formSearch['fullName'] = { $regex: name, $options: 'i' }
     }
-    if (role != 'all' && role) {
-        formSearch['role'] = role
-    }
-    console.log(formSearch)
+
     // Sort
     let sortProperty
     let ascOrDesc
@@ -30,11 +26,11 @@ const getUsers = async (querySearch) => {
             break
         case '2': // Ngay tao tai khoan tu cu  -> moi
             sortProperty = 'createdAt'
-            ascOrDesc = 1
+            ascOrDesc = -1
             break
         case '3': // Ngay tao tai khoan tu moi -> cu
             sortProperty = 'createdAt'
-            ascOrDesc = -1
+            ascOrDesc = 1
             break
         default:
             // Ten tai khoan tu A -> Z
@@ -103,7 +99,6 @@ const changePassword = async (userID, oldPassword, newPassword) => {
 const deleteUser = async (userID) => {
     const foundUser = await User.findById(userID)
     if (!foundUser) throw new CustomError(httpStatus.NOT_FOUND, 'User not found')
-    if (foundUser.role === 'ADMIN') throw new CustomError(httpStatus.BAD_REQUEST, 'Can not delete user as role ADMIN')
     return User.findByIdAndDelete(userID)
 }
 
@@ -112,7 +107,8 @@ const getUserByEmail = async (email) => {
 }
 
 const getUserByID = async (userID) => {
-    return User.find({ _id: userID })
+    console.log(userID)
+    return User.findById(userID)
 }
 
 const authorization = async (userID, role) => {

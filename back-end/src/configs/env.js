@@ -54,6 +54,7 @@ const env = {
         password: getOsEnv('SWAGGER_PASSWORD'),
     },
     pageLimit: toNumber(getOsEnv('PAGE_LIMIT')),
+    pageAdminLimit: toNumber(getOsEnv('PAGE_ADMIN_LIMIT')),
 }
 
 module.exports = env

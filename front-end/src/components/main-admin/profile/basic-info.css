@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.parent_container {
+	width: 96%;
+	height: 770px;
+	margin-left: 24px;
+	float: right;
+	margin-top: 24px;
+	margin-right: 24px;
+	background: #ffffff;
+	border-radius: 10px;
+}
+
+.basic_info {
+	/* width: 1012px; */
+	width: 100%;
+	/* min-height: 728px; */
+	background: #fff;
+	border-radius: 10px;
+	position: relative;
+	padding: 1% 5%;
+	/* margin: 16px 0px 20px 0px; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.basic-container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.basic_info .info-title {
+	color: #000000 !important;
+	align-items: center;
+	justify-content: center;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+.basic_info h5 {
+	color: #3eadcf;
+}
+
+.basic_info input {
+	border: 1px solid #3eadcf;
+	border-radius: 10px;
+	padding: 12px 16px 12px 16px;
+	outline: none;
+	opacity: 0.5;
+}
+
+.basic_info input[type='number']::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.basic_info p {
+	height: 16px;
+	margin-bottom: 12px;
+	margin-top: 16px;
+
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1rem;
+	line-height: 14px;
+}
+.basic_info p.active {
+	margin-top: 3px !important;
+	margin-bottom: 0px;
+	font-size: 1rem;
+	color: red;
+	display: block;
+}
+.basic_info p.non-active {
+	display: none;
+}
+.basic_info .input_items {
+	width: 100%;
+	height: 40px;
+	border: 1px solid #000;
+	box-sizing: border-box;
+	border-radius: 6px;
+
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1.1rem;
+	line-height: 16px;
+}
+
+::placeholder {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.basic_info .input_price {
+	width: 463px;
+}
+.basic_info .input_title {
+	width: 964px;
+	height: 48px;
+	border: 1px solid rgba(161, 132, 116, 0.5);
+	opacity: 1;
+}
+
+.basic_info input.priceTotal::placeholder {
+	color: red !important;
+	font-size: 14px;
+	opacity: 1;
+}
+.basic_info input.priceTotal {
+	border: none !important;
+	min-width: 50%;
+	background: #fff;
+	opacity: 1 !important;
+}
+
+.basic_info p.addressFull {
+	border: 1px solid #3eadcf;
+	padding: 15px;
+	width: 964px;
+	opacity: 0.5;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.basic_info .center {
+	width: 100%;
+	float: left;
+	text-align: center;
+	margin-bottom: 16px;
+}
+
+.basic_info span {
+	color: red;
+}
+
+.select_container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 2rem;
+	grid-row-gap: 1rem;
+}
+.basic_info .select__items {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+.basic_info .icon_down {
+	position: absolute;
+	width: 12px;
+	height: 7.41px;
+	margin: 16px 16px 16px 290px;
+}
+.basic_info .select__items select {
+	padding: 12px 16px 10px 16px;
+	outline: none;
+	-webkit-appearance: none;
+	opacity: 0.5;
+
+	width: 318px;
+	height: 40px;
+	background: #ffffff;
+	border: 1px solid #3eadcf;
+	box-sizing: border-box;
+	border-radius: 6px;
+
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.basic_info .select__items option {
+	font-size: 14px;
+	font-weight: 500;
+	color: #000000;
+	line-height: 16px;
+}
+
+.basic_info span.count-key {
+	color: #000;
+	opacity: 0.5;
+	position: absolute;
+	top: 114px;
+	right: 38px;
+}
+
+.title {
+	width: 100%;
+	float: left;
+	size: 100px;
+
+	color: #000000 !important;
+}
+
+.btnSave {
+	width: 192px;
+	height: 40px;
+	margin: 24px 0px 0px 0px;
+	background: #3eadcf;
+	border: 1px solid #3eadcf;
+	box-sizing: border-box;
+	border-radius: 6px !important;
+	opacity: 1 !important;
+
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1rem;
+	line-height: 16px;
+	color: #ffffff;
+
+	padding: 13px 0px 11px 0px !important;
+}
+
+.btnSave:hover {
+	/* opacity: 0.5; */
+	cursor: pointer;
+}
+
+/* ========= IMAGE CONTAINER ============= */
+
+.basic_info .avatar_container {
+	width: 100%;
+	float: left;
+	/* vertical-align: baseline; */
+	display: flex;
+	margin-right: 50px;
+}
+
+.image_user_container {
+	width: 150px;
+	height: 150px;
+	border: 3px solid #3eadcf;
+	border-radius: 50%;
+	/* margin: 16px 0px 3px 0px; */
+	/* margin-top: 16px; */
+	overflow: hidden;
+	/* display: flex; */
+	/* position: relative; */
+}
+
+.image_user_container > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.image_info_container {
+	margin-left: 16px;
+	/* margin-top: 27px; */
+}
+
+/* ========= UPLOAD FILE ============= */
+
+.upload_file {
+	display: inline-block;
+	border-radius: 0.3rem;
+	cursor: pointer;
+	margin-top: 11px;
+
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1rem;
+	line-height: 16px;
+
+	color: #3eadcf;
+}
+
+/* ========= TOAST ============= */
+
+.post-real-estate-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* ========= RADIO BUTTON ============= */
+
+.gender-select {
+	width: 95%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.m-top-16 {
+	margin-top: 16px;
+}
+
+.custom-radio-btn {
+	/* --size: 16px; */
+	--size: 16px;
+	min-width: var(--size);
+	height: var(--size);
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+
+	position: relative;
+	padding-left: 0;
+	/* opacity: 0.5; */
+	padding-right: var(--size);
+}
+
+.custom-radio-btn input {
+	display: none;
+}
+
+.custom-radio-btn .label {
+	/* margin: 8px 12px 0 0; */
+	margin: 8px 0px 0px 21px;
+	color: black !important;
+	font-weight: 400;
+
+	font-style: normal;
+	font-weight: normal;
+	font-size: 1rem;
+	line-height: 16px;
+}
+
+.custom-radio-btn .checkmark {
+	--gap: 3px;
+	--border: 1px;
+	--check-color: rgba(0, 0, 0, 1);
+	width: var(--size);
+	height: var(--size);
+	margin-top: 3px;
+	border-radius: 50%;
+	display: inline-block;
+	transition: opacity 0.3s ease;
+	/* changes from the video  */
+
+	border: var(--border) solid rgba(0, 0, 0, 1);
+	padding: var(--gap);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	margin-right: 10px;
+}
+
+.custom-radio-btn input:checked ~ .checkmark {
+	/* changes from the video  */
+
+	/*  content box origin will make sure the bg-image only stays inside content area in between padding  */
+	background-origin: content-box;
+	background-repeat: no-repeat;
+	background-image: radial-gradient(
+		circle at center,
+		var(--check-color)
+			calc((var(--size) - (var(--border) * 2) - (var(--gap) * 2)) / 2),
+		rgba(255, 255, 255, 0) 0
+	);
+}
+
+/* ========= RADIO BUTTON SECOND ============= */
+
+.gender-select-second {
+	width: 95%;
+	display: flex;
+	flex-direction: row;
+	/* align-items: center; */
+	/* justify-content: space-between; */
+}
+
+.custom-radio-btn-second {
+	--size: 16px;
+	min-width: var(--size);
+	height: var(--size);
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+
+	position: relative;
+	padding-left: 0;
+	/* opacity: 0.5; */
+	/* padding-right: var(--size); */
+	margin-right: 48px;
+}
+
+.custom-radio-btn-second input {
+	display: none;
+}
+
+.custom-radio-btn-second .label {
+	/* margin: 8px 12px 0 0; */
+	margin: 8px 0px 0px 21px;
+	color: black !important;
+	font-weight: 400;
+
+	font-style: normal;
+	font-weight: normal;
+	font-size: 1rem;
+	line-height: 16px;
+}
+
+.custom-radio-btn-second .checkmark {
+	--gap: 3px;
+	--border: 1px;
+	--check-color: rgba(0, 0, 0, 1);
+	width: var(--size);
+	height: var(--size);
+	margin-top: 3px;
+	border-radius: 50%;
+	display: inline-block;
+	transition: opacity 0.3s ease;
+	/* changes from the video  */
+
+	border: var(--border) solid rgba(0, 0, 0, 1);
+	padding: var(--gap);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	margin-right: 10px;
+}
+
+.custom-radio-btn-second input:checked ~ .checkmark {
+	/* changes from the video  */
+
+	/*  content box origin will make sure the bg-image only stays inside content area in between padding  */
+	background-origin: content-box;
+	background-repeat: no-repeat;
+	background-image: radial-gradient(
+		circle at center,
+		var(--check-color)
+			calc((var(--size) - (var(--border) * 2) - (var(--gap) * 2)) / 2),
+		rgba(255, 255, 255, 0) 0
+	);
+}

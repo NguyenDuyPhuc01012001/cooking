@@ -17,8 +17,7 @@ const generateToken = (user) => {
         id: user.id,
         name: user.fullName,
         email: user.email,
-        role: user.role,
-        isVerifyEmail: user.isVerifyEmail
+        isVerifyEmail: user.isVerifyEmail,
     }
     return jwt.sign(payload, env.passport.jwtToken, {
         expiresIn: env.passport.jwtAccessExpired,
@@ -50,7 +49,6 @@ const generateResetPasswordToken = (email) => {
     )
     return resetPasswordToken
 }
-
 
 module.exports = {
     generateToken,

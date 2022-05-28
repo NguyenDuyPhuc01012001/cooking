@@ -8,19 +8,16 @@ const validate = require('../../../middlewares/validate')
 const router = express.Router()
 
 router.get(
-    '/',
+    '/getAll',
     passport.authenticate('jwt', { session: false }),
-    // checkRole('ADMIN'),
     validate(userValidation.getUsersByAdmin),
     userController.getUsers
 )
-router.get('/:userID/users', validate(userValidation.getUserByID), userController.getUsersbyID)
-router.get('/profile/:userID', userController.getUserByID)
+router.get('/profile/:userID', validate(userValidation.getUserByID), userController.getUserByID)
 
 router.post(
     '/',
     passport.authenticate('jwt', { session: false }),
-    // checkRole('ADMIN'),
     validate(userValidation.createUserSchema),
     userController.createUser
 )
@@ -46,7 +43,6 @@ router.put(
 router.delete(
     '/:userID',
     passport.authenticate('jwt', { session: false }),
-    checkRole('ADMIN'),
     validate(userValidation.deleteUserSchema),
     userController.deleteUser
 )

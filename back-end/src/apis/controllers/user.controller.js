@@ -7,13 +7,8 @@ const getUsers = catchAsync(async (req, res, next) => {
     res.status(httpStatus.OK).send(result)
 })
 
-const getUsersbyID = catchAsync(async (req, res, next) => {
-    const users = await userService.getUserByID(req.params.userID)
-    res.status(httpStatus.OK).send(users)
-})
-
 const getUserByID = catchAsync(async (req, res, next) => {
-    const users = await userService.getUserByID2(req.params.userID)
+    const users = await userService.getUserByID(req.params.userID)
     res.status(httpStatus.OK).send(users)
 })
 
@@ -95,7 +90,6 @@ module.exports = {
     updateUser,
     deleteUser,
     changePassword,
-    getUsersbyID,
     getUserByID,
     checkCardNumber,
     likePost,

@@ -35,10 +35,9 @@ const getUserByID = {
 
 const getUsersByAdmin = {
     query: Joi.object().keys({
-        userID: Joi.string(),
+        name: Joi.string(),
         page: Joi.string(),
         sort: Joi.string(),
-        role: Joi.string(),
     }),
 }
 

@@ -1,0 +1,17 @@
+* {
+	display: flex;
+}
+
+.popup-content {
+	position: absolute !important;
+	margin: none !important;
+	top: 0 !important;
+	left: 35%;
+}
+
+.popup-overlay {
+	display: block;
+	position: absolute !important;
+	background: rgba(0, 0, 0, 0.5);
+	height: 4000px !important;
+}

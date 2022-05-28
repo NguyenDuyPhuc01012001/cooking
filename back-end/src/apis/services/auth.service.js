@@ -12,7 +12,7 @@ const sendVerificationEmail = async (verifyEmailToken, email) => {
     console.log(env.app.schema)
     const url = `${process.env.CLIENT_URL}/activate/${verifyEmailToken}`
     const emailData = {
-        from: '19522353@gm.uit.edu.vn', //must use only this email which is registered with account in website Sendgrid cuz this account owns MAIL_KEY
+        from: '19522038@gm.uit.edu.vn', //must use only this email which is registered with account in website Sendgrid cuz this account owns MAIL_KEY
         to: email,
         subject: 'Xác thực email',
         html: `
@@ -31,6 +31,7 @@ const sendVerificationEmail = async (verifyEmailToken, email) => {
         `,
     }
     sgMail.setApiKey(process.env.MAIL_KEY) // MAIL_KEY in .env
+
     return sgMail.send(emailData).catch((err) => {
         throw new CustomError(httpStatus.INTERNAL_SERVER_ERROR, err.message)
     })
@@ -52,7 +53,7 @@ const sendResetPasswordEmail = async (resetPasswordToken, email) => {
     console.log(env.app.schema)
     const url = `${process.env.CLIENT_URL}/reset/${resetPasswordToken}`
     const emailData = {
-        from: '19522353@gm.uit.edu.vn', //must use only this email which is registered with account in website Sendgrid cuz this account owns MAIL_KEY
+        from: '19522038@gm.uit.edu.vn', //must use only this email which is registered with account in website Sendgrid cuz this account owns MAIL_KEY
         to: email,
         subject: 'Thay đổi mật khẩu',
         html: `

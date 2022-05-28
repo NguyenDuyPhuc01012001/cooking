@@ -1,6 +1,6 @@
 const passport = require('passport')
 
-const { jwtStrategy, localStrategy, facebookStrategy, googleStrategy } = require('../apis/plugins/passport')
+const { jwtStrategy, localStrategy } = require('../apis/plugins/passport')
 
 module.exports = (app) => {
     app.use(passport.initialize())
