@@ -1,51 +1,39 @@
-import React, { Component } from 'react';
-
-import chien from '../../assets/type/chien.jpg';
-import xao from '../../assets/type/xao.jpg';
-import kho from '../../assets/type/kho.jpg';
-import nuong from '../../assets/type/nuong.jpg';
-import banh from '../../assets/type/banh.jpg';
-
+import React, { Component, useEffect, useState } from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 import '@splidejs/splide/dist/css/splide.min.css';
 import '../../assets/css/hot_and_types.css';
 import './home.css';
 
-function Hot() {
-	const listType = [
-		{
-			id: 'chien',
-			title: 'Món chiên',
-			image: chien,
-			link: '/chiên?page=0',
-		},
-		{
-			id: 'xao',
-			title: 'Món xào',
-			image: xao,
-			link: '/xào?page=0',
-		},
-		{
-			id: 'kho',
-			title: 'Món kho',
-			image: kho,
-			link: '/kho?page=0',
-		},
-		{
-			id: 'nuong',
-			title: 'Món nướng',
-			image: nuong,
-			link: '/nướng?page=0',
-		},
-		{
-			id: 'banh',
-			title: 'làm bánh',
-			image: banh,
-			link: '/',
-		},
-	];
+function Category() {
+	const [dataCategory, setDataCategory] = useState([]);
+
+	const fetchData = () => {
+		return axios({
+			method: 'GET',
+			url: `${process.env.REACT_APP_API_URL}/api/v1/categories/getAll`,
+		})
+			.then((res) => {
+				const data = res.data;
+				const newData = data.map((item, index) => {
+					return {
+						id: item._id,
+						title: item.title,
+						image: item.image,
+						link: item.short_title + '?page=0',
+					};
+				});
+				setDataCategory(newData);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+	useEffect(() => {
+		fetchData();
+	}, []);
 	return (
 		<div class="light_background wrapper ">
 			<motion.div
@@ -66,10 +54,10 @@ function Hot() {
 					}}
 					className="type__list"
 				>
-					{listType.map((type) => {
+					{dataCategory.map((type) => {
 						return (
 							<SplideSlide key={type.id}>
-								<Link to={`/user/category${type.link}`}>
+								<Link to={`/user/category/${type.link}`}>
 									<div className="type__item">
 										<img
 											src={type.image}
@@ -90,4 +78,4 @@ function Hot() {
 	);
 }
 
-export default Hot;
+export default Category;

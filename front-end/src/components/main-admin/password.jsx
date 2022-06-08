@@ -49,7 +49,6 @@ const Password = () => {
 	const changePassword = (currentPassword, newPassword) => {
 		const Token = Cookies.get('token');
 		user = JSON.parse(atob(Token.split('.')[1]));
-		console.log(user.id);
 		axios
 			.patch(
 				`${process.env.REACT_APP_API_URL}/api/v1/user/changePassword/${user.id}`,

@@ -29,12 +29,9 @@ function Admin() {
 	const Token = Cookies.get('token');
 
 	////////////////////////////////////////////////////////////////
-	const [isShowChangeEmail, setIsShowChangeEmail] = useState(false);
 	const [modalIsOpen, setIsOpen] = React.useState(false);
-	const [headerEmail, setHeaderEmail] = useState();
-	const [isShowSignUp, setIsShowSignUp] = useState(false);
-	const [isShowConfirm, setIsShowConfirm] = useState(false);
 	const [currentPage, setCurrentPage] = useState(0);
+	const [currentAdminId, setCurrentAdminId] = useState();
 	const [lstLength, setLstLength] = useState(1); // have't use setLstLength
 	const items = [...Array(lstLength)];
 	const itemsPerPage = 10;
@@ -58,11 +55,6 @@ function Admin() {
 		setItemOffset(newOffset);
 	};
 
-	const handleSignUp = () => {
-		setIsShowSignUp(true);
-		setIsShowConfirm(false);
-	};
-
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		console.log(name, value);
@@ -70,21 +62,6 @@ function Admin() {
 			...prevState,
 			[name]: value,
 		}));
-	};
-
-	const handleConfirm = () => {
-		setIsShowConfirm(true);
-		setIsShowSignUp(false);
-	};
-
-	const handleUpdateConfirmation = () => {
-		setIsShowConfirm(false);
-		setIsShowChangeEmail(true);
-	};
-
-	const handleChangeEmailClose = () => {
-		setIsShowChangeEmail(false);
-		setIsShowConfirm(true);
 	};
 	////////////////////////////////////////////////////////////////
 
@@ -117,7 +94,14 @@ function Admin() {
 	};
 	useEffect(() => {
 		fetchData();
+		getAdminId();
 	}, [currentPage]);
+
+	const getAdminId = () => {
+		const Token = Cookies.get('token');
+		const user = JSON.parse(atob(Token.split('.')[1]));
+		setCurrentAdminId(user.id);
+	};
 
 	const onClickSearched = () => {
 		fetchData();
@@ -245,17 +229,19 @@ function Admin() {
 										<td></td> {/* Lấy khoảng trống} */}
 										<td>{data.birthday}</td>
 										<td>
-											<button
-												onClick={(e) => {
-													e.stopPropagation();
-													openModal();
-													setCurrentUid({
-														id: data.id,
-													});
-												}}
-											>
-												<i class="fas fa-trash"></i>
-											</button>
+											{currentAdminId != data.id && (
+												<button
+													onClick={(e) => {
+														e.stopPropagation();
+														openModal();
+														setCurrentUid({
+															id: data.id,
+														});
+													}}
+												>
+													<i class="fas fa-trash"></i>
+												</button>
+											)}
 										</td>
 									</tr>
 								))}

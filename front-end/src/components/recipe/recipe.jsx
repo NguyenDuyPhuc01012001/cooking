@@ -59,7 +59,7 @@ function Recipe() {
 		// return <button onClick={() => alert('This will not work')}>Print this out!</button>;
 
 		// Good
-		return <button>Print</button>; // eslint-disable-line max-len
+		return <i class="fas fa-print"></i>; // eslint-disable-line max-len
 	}, []);
 	const [details, setDetails] = useState([]);
 	const [pictureURL, setPictureURL] = useState('');
@@ -87,9 +87,14 @@ function Recipe() {
 	const clickHandler = (tag) => {
 		history.push('/user/tag/' + tag + '?page=0');
 	};
-	const getPageMargins = () => {
-		return `@page { margin: 1rem !important; }`;
+	const isOnlyNumber = (time) => {
+		const re = /^[0-9\b]+$/;
+
+		if (time === '' || re.test(time)) {
+			return time + ' phút';
+		} else return time;
 	};
+
 	return (
 		<div>
 			<div ref={componentRef} className="detail_wrapper">
@@ -107,12 +112,12 @@ function Recipe() {
 								<article>
 									<i class="fas fa-clock"></i>
 									<h5>Chuẩn bị</h5>
-									<p>{details.prepTime} phút</p>
+									<p>{isOnlyNumber(details.prepTime)}</p>
 								</article>
 								<article>
 									<i class="far fa-clock"></i>
 									<h5>Nấu</h5>
-									<p>{details.cookTime} phút</p>
+									<p>{isOnlyNumber(details.cookTime)}</p>
 								</article>
 								<article>
 									<i class="fas fa-user-friends"></i>
@@ -120,30 +125,32 @@ function Recipe() {
 									<p>{details.people} người</p>
 								</article>
 							</div>
-							<p class="recipe-tags">
-								Thẻ :
-								{details == undefined ||
-								details == null ||
-								details.length == 0 ? (
-									<div></div>
-								) : (
-									details.tags.map((item, index) => (
-										<button onClick={() => clickHandler(item.tag)}>
-											{item.tag}
-										</button>
-									))
-								)}
-							</p>
-							<div className="print_btn">
-								<ReactToPrint
-									content={reactToPrintContent}
-									documentTitle="AwesomeFileName"
-									onAfterPrint={handleAfterPrint}
-									onBeforeGetContent={handleOnBeforeGetContent}
-									onBeforePrint={handleBeforePrint}
-									removeAfterPrint
-									trigger={reactToPrintTrigger}
-								/>
+							<div className="more_func">
+								<p class="recipe-tags">
+									Thẻ :
+									{details == undefined ||
+									details == null ||
+									details.length == 0 ? (
+										<div></div>
+									) : (
+										details.tags.map((item, index) => (
+											<button onClick={() => clickHandler(item.tag)}>
+												{item.tag}
+											</button>
+										))
+									)}
+								</p>
+								<div className="print_btn">
+									<ReactToPrint
+										content={reactToPrintContent}
+										documentTitle="Tasty"
+										onAfterPrint={handleAfterPrint}
+										onBeforeGetContent={handleOnBeforeGetContent}
+										onBeforePrint={handleBeforePrint}
+										removeAfterPrint
+										trigger={reactToPrintTrigger}
+									/>
+								</div>
 							</div>
 						</article>
 					</section>
@@ -158,7 +165,7 @@ function Recipe() {
 										<div></div>
 									) : (
 										details.ingredients.map((item, index) => (
-											<p class="single-ingredient" key={index}>
+											<p className="single-ingredient" key={index}>
 												{item}
 											</p>
 										))
@@ -177,25 +184,23 @@ function Recipe() {
 							<h4>Hướng dẫn</h4>
 							{/* <!-- single instruction --> */}
 							<div class="single-instruction">
-								{activeTab === 'instruction' && (
-									<div>
-										{details == undefined ||
-										details == null ||
-										details.length == 0 ? (
-											<div></div>
-										) : (
-											details.instructions.map((item, index) => (
-												<div>
-													<header>
-														<p>Bước {index + 1}</p>
-														<div></div>
-													</header>
-													<p key={index}>{item}</p>
-												</div>
-											))
-										)}
-									</div>
-								)}
+								<div>
+									{details == undefined ||
+									details == null ||
+									details.length == 0 ? (
+										<div></div>
+									) : (
+										details.instructions.map((item, index) => (
+											<div>
+												<header>
+													<p>Bước {index + 1}</p>
+													<div></div>
+												</header>
+												<p key={index}>{item}</p>
+											</div>
+										))
+									)}
+								</div>
 							</div>
 							{/* <!-- end of single instruction --> */}
 						</article>

@@ -1,7 +1,7 @@
 const httpStatus = require('http-status')
 const bcrypt = require('bcryptjs')
 const CustomError = require('../../utils/custom-error')
-const { User, Liked, RealEstate } = require('../models')
+const { User } = require('../models')
 const env = require('../../configs/env')
 
 const getUsers = async (querySearch) => {
@@ -107,7 +107,6 @@ const getUserByEmail = async (email) => {
 }
 
 const getUserByID = async (userID) => {
-    console.log(userID)
     return User.findById(userID)
 }
 
@@ -116,10 +115,6 @@ const authorization = async (userID, role) => {
     if (!foundUser) {
         throw new CustomError(httpStatus.BAD_GATEWAY, 'User not found')
     }
-    if (['ADMIN', 'USER'].indexOf(role) === -1) {
-        throw new CustomError(httpStatus.BAD_GATEWAY, `Not authorized ${role}`)
-    }
-    foundUser.role = role
     return foundUser.save()
 }
 

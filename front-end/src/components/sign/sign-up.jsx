@@ -7,7 +7,6 @@ import eyeOff from '../../assets/sign_up/eye_off.png';
 import Cookies from 'js-cookie';
 import { checkValidEmail } from './valid-email';
 import { checkValidPassword } from './valid-password';
-import { checkValidIdentity } from './valid-identity';
 import { checkValidName } from './valid-name';
 import SignIn from './sign-in';
 import ConfirmEmail from './confirm-email';
@@ -179,13 +178,6 @@ const SignUp = ({ setIsSignUpOpen, handleConfirm, setEmailHeader }) => {
 				sex: gender,
 			})
 			.then((res) => {
-				const bearerToken = res.headers['authorization'];
-
-				Cookies.set('bearerToken', bearerToken);
-				if (bearerToken.startsWith('Bearer ')) {
-					const token = bearerToken.substring(7, bearerToken.length);
-					Cookies.set('token', token);
-				}
 				setEmailHeader(email);
 				handleConfirm();
 			})

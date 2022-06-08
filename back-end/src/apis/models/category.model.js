@@ -4,10 +4,13 @@ const Schema = mongoose.Schema
 
 const CategorySchema = new Schema(
     {
-        name: {
+        title: {
             type: String,
         },
-        code: {
+        image: {
+            type: String,
+        },
+        short_title: {
             type: String,
         },
     },

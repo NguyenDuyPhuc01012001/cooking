@@ -6,7 +6,9 @@ import next from '../../assets/introduction_page/arrow-right.png';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import banner from '../../assets/introduction_page/banner.png';
+import banner1 from '../../assets/introduction_page/banner1.jpg';
+import banner2 from '../../assets/introduction_page/banner2.jpg';
+import banner3 from '../../assets/introduction_page/banner3.jpg';
 import downBtn from '../../assets/introduction_page/downBtn.png';
 import FormRegister from './FormRegister';
 
@@ -19,7 +21,7 @@ export default function Banner() {
 			<div className="banner-container">
 				<div className="banner-carousel-container">
 					<div className="banner-title">
-						<span>Tìm kiếm ngôi nhà mơ ước của bạn</span>
+						<span>Tìm kiếm công thức nấu ăn</span>
 					</div>
 					<div className="banner-btn-down">
 						<img src={downBtn} />
@@ -40,13 +42,13 @@ export default function Banner() {
 						onClick={() => {}}
 					>
 						<div className="banner-content">
-							<img src={banner} />
+							<img src={banner1} />
 						</div>
 						<div className="banner-content">
-							<img src={banner} />
+							<img src={banner2} />
 						</div>
 						<div className="banner-content">
-							<img src={banner} />
+							<img src={banner3} />
 						</div>
 					</OwlCarousel>
 				</div>

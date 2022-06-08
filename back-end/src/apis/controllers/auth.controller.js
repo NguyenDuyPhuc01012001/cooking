@@ -7,6 +7,7 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 
 const login = catchAsync(async (req, res) => {
     const { user } = req
+
     const token = await tokenService.generateToken(user)
     res.setHeader('Authorization', `Bearer ${token}`)
     res.status(httpStatus.OK).send({ user })
@@ -14,17 +15,15 @@ const login = catchAsync(async (req, res) => {
 
 const register = catchAsync(async (req, res) => {
     const user = await userService.createUser(req.body)
-    const token = await tokenService.generateToken(user)
-
-    res.setHeader('Authorization', `Bearer ${token}`)
     res.status(httpStatus.CREATED).send({
         user: user,
-        message: 'Send email verification',
+        message: 'Create successfully',
     })
 })
 
 const sendVerificationEmail = catchAsync(async (req, res) => {
-    const { email } = req.user
+    const { email } = req.body
+    console.log('sending')
     const verifyEmailToken = await tokenService.generateVerifyEmailToken(email)
     await authService.sendVerificationEmail(verifyEmailToken, email)
     res.status(httpStatus.OK).send({
@@ -37,6 +36,13 @@ const activateEmailToken = catchAsync(async (req, res) => {
     await authService.activateEmailToken(token)
     res.status(httpStatus.OK).send({
         message: 'Your token has been activated',
+    })
+})
+const validateResetPasswordToken = catchAsync(async (req, res) => {
+    const { token } = req.body
+    await authService.validateResetPasswordToken(token)
+    res.status(httpStatus.OK).send({
+        message: 'Your token has been validated',
     })
 })
 
@@ -75,6 +81,7 @@ module.exports = {
     register,
     sendVerificationEmail,
     activateEmailToken,
+    validateResetPasswordToken,
     updateEmail,
     forgotPassword,
     resetPassword,

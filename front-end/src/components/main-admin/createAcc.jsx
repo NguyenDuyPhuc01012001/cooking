@@ -195,17 +195,18 @@ const CreateAccount = () => {
 				sex: gender,
 			})
 			.then((res) => {
+				setEmail(email);
 				setIsLoading(false);
 				handleConfirm();
 			})
 			.catch((err) => {
 				setIsLoading(false);
 				const code = err.message.substring(32, err.message.length);
-				console.log(err);
 				if (code == '401') {
 					setEmail('');
 					setError('Email này đã được đăng ký trước đó');
 				} else {
+					console.log(err);
 					setError('Lỗi mạng không xác định');
 				}
 			});

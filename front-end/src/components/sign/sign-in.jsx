@@ -1,7 +1,5 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import GoogleLogin from 'react-google-login';
-import GoogleLoginUI from './google-login';
 import { Fragment } from 'react/cjs/react.production.min';
 import eyeOn from '../../assets/sign_in/eye_on.png';
 import eyeOff from '../../assets/sign_in/eye_off.png';
@@ -11,14 +9,7 @@ import { checkValidPassword } from './valid-password';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { showErrMsg } from './notification/notification';
-import Popup from 'reactjs-popup';
-import SignUp from './sign-up';
-//import "./bootstrap.css";
 import './sign-in.css';
-var posX = window.innerWidth;
-window.onresize = () => {
-	posX = window.innerWidth;
-};
 const SignIn = ({
 	setIsShowSignIn,
 	setIsLogin,
@@ -34,7 +25,7 @@ const SignIn = ({
 	const [emailError, setEmailError] = useState();
 	const [checkEmptyPassword, setCheckEmptyPassword] = useState(true);
 	const [isRememberMe, setIsRemember] = useState(false);
-	const history = useHistory();
+
 	useEffect(() => {
 		//Check if the Cookies name rememberStatus is exist to prevent null exception
 		const userEmail = Cookies.get('userEmail');
@@ -104,7 +95,9 @@ const SignIn = ({
 					setIsShowSignIn();
 				})
 				.catch((err) => {
-					setError('Sai email hoặc mật khẩu');
+					const code = err.message.substring(32, err.message.length);
+					if (code === '403') setError('Vui lòng xác thực email');
+					else setError('Sai email hoặc mật khẩu');
 				});
 		}
 	};
@@ -117,7 +110,7 @@ const SignIn = ({
 			<div className="container-sign-in w-440 h-auto bg-fffff border-radius-20 ">
 				<span className="w-99 h-28 hello-box">Xin chào,</span>
 				<button onClick={handleShowLoginForm} className="square-16 exit-button">
-					<img src={exit} />
+					<img src={exit} alt="exit" />
 				</button>
 
 				<div className="title-sign-in">Đăng nhập hoặc tạo tài khoản mới</div>
@@ -183,8 +176,6 @@ const SignIn = ({
 
 					<br />
 				</div>
-				<br />
-				<br />
 			</div>
 		</Fragment>
 	);

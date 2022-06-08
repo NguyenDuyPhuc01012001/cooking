@@ -34,9 +34,15 @@ const schema = yup.object().shape({
 		),
 	category: yup
 		.string()
-		.required('Bạn cần nhập thông tin')
-		.test('inValid', 'Vui lòng nhập phân loại', (value) => {
-			return value !== 'none';
+		.required('Bạn cần chọn phân loại')
+		.test('inValid', 'Vui lòng chọn phân loại', (value) => {
+			return value !== '';
+		}),
+	difficulty: yup
+		.string()
+		.required('Bạn cần chọn độ khó')
+		.test('inValid', 'Vui lòng chọn độ khó', (value) => {
+			return value !== '';
 		}),
 	content: yup
 		.string()
@@ -51,6 +57,19 @@ const schema = yup.object().shape({
 			3000,
 			'Vui lòng nhập mô tả của bạn. Tối thiểu là 30 ký tự và tối đa là 3000 ký tự.'
 		),
+	// file: yup
+	// 	.mixed()
+	// 	.test('required', 'Bạn cần thêm ảnh', (value) => {
+	// 		return value && value.length;
+	// 	})
+	// 	.test('fileSize', 'Kích thước ảnh không phù hợp', (value, context) => {
+	// 		return (
+	// 			value &&
+	// 			value[0] &&
+	// 			value[0].size <= 5 * 1024 * 1024 &&
+	// 			value[0] >= 10 * 1024
+	// 		);
+	// 	}),
 });
 
 const apiImage = 'https://api.cloudinary.com/v1_1/nam-duong/upload';
@@ -128,6 +147,7 @@ const PostRecipe = () => {
 	const handleSubmitForm = async (e) => {
 		setSubmitting(true);
 		let pictures = [];
+		console.log('submmitting');
 		for (let file of files) {
 			const formData = new FormData();
 			formData.append('file', file);
@@ -148,8 +168,8 @@ const PostRecipe = () => {
 		for (let instruction of instructionList) {
 			instructions.push(instruction.instruction);
 		}
-		const difficulty = 'easy';
-		let { title, category, cookTime, prepTime, people } = basicInfo;
+		// const difficulty = 'easy';
+		let { title, category, cookTime, prepTime, people, difficulty } = basicInfo;
 		const formData = {
 			title,
 			category,
@@ -231,9 +251,11 @@ const PostRecipe = () => {
 						/>
 
 						<Tag tagList={tagList} setTagList={setTagList} />
-						<button type="submit" className="btnPost">
-							Đăng tin
-						</button>
+						{files.length != 0 && (
+							<button type="submit" className="btnPost">
+								Đăng tin
+							</button>
+						)}
 					</form>
 				</FormProvider>
 

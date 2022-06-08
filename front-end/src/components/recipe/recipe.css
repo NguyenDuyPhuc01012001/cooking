@@ -56,6 +56,7 @@
 	flex-wrap: wrap;
 	font-size: 20px;
 	font-weight: 600;
+	margin-bottom: 0;
 }
 .recipe-tags button {
 	background: #645cff;
@@ -69,6 +70,25 @@
 	padding: 3rem 0;
 	display: grid;
 	gap: 2rem 5rem;
+}
+
+.print_btn {
+	background: #645cff;
+	border-radius: 0.25rem;
+	color: #fff;
+	padding: 0.5rem 0.5rem;
+	margin: 0 auto;
+	width: 3rem;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.more_func {
+	display: grid;
+	grid-template-columns: 1fr 3rem;
+	gap: 1rem;
 }
 @media screen and (min-width: 992px) {
 	.recipe-hero {
@@ -125,8 +145,10 @@
 	color: #645cff;
 	margin-bottom: 0;
 }
-.single-instruction > p {
+.single-instruction div > p {
 	color: #334155;
+	text-align: justify;
+	text-justify: inter-word;
 }
 
 .single-instruction header div {
@@ -142,6 +164,8 @@
 .single-ingredient {
 	border-bottom: 2px solid #645cff;
 	padding-bottom: 0.75rem;
+	text-align: justify;
+	text-justify: inter-word;
 	color: #334155;
 }
 .single-tool {

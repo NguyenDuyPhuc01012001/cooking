@@ -16,7 +16,7 @@ class Information extends Component {
 						</div>
 						<div className="slogan_frame_title">Tầm nhìn</div>
 						<div className="slogan_frame_content">
-							Trở thành sàn giao dịch BĐS lớn nhất Việt Nam
+							Trở thành kênh công thức nấu ăn lớn nhất Việt Nam
 						</div>
 					</div>
 
@@ -26,7 +26,7 @@ class Information extends Component {
 						</div>
 						<div className="slogan_frame_title">Mục tiêu</div>
 						<div className="slogan_frame_content">
-							Nơi đáng tin cậy, phụng sự các nhà đầu tư
+							Mang đến những món ăn chất lượng
 						</div>
 					</div>
 
@@ -36,7 +36,7 @@ class Information extends Component {
 						</div>
 						<div className="slogan_frame_title">Giá trị cốt lõi</div>
 						<div className="slogan_frame_content">
-							<h1>Tập trung vào khách hàng và quyết tâm đạt được mục tiêu</h1>
+							Tập trung vào khách hàng và quyết tâm đạt được mục tiêu
 						</div>
 					</div>
 				</div>

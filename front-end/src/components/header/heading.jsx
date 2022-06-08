@@ -76,7 +76,6 @@ function AdminInfo() {
 		const Token = Cookies.get('token');
 		if (!!Token) {
 			var a = JSON.parse(atob(Token.split('.')[1]));
-			console.log(a);
 			setIsLogin(true);
 			await getUserData(a);
 		} else {

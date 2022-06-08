@@ -13,7 +13,8 @@ const BasicInfo = ({ basicInfo, setBasicInfo }) => {
 		getValues,
 	} = useFormContext();
 	const [countTitle, setCountTitle] = useState(99);
-	const { title, category, prepTime, cookTime, people } = basicInfo;
+	const [dataCategory, setDataCategory] = useState([]);
+	const { title, category, prepTime, cookTime, people, difficulty } = basicInfo;
 
 	const handleChangeInput = (e) => {
 		const re = /^[0-9\b]+$/; //rules
@@ -22,15 +23,42 @@ const BasicInfo = ({ basicInfo, setBasicInfo }) => {
 		}
 	};
 
-	const handleChangeInfo = (e) => {
+	const handleChangeInfo = async (e) => {
 		setBasicInfo({
 			...basicInfo,
 			[e.target.name]: e.target.value,
 		});
+		console.log(e.target.name);
+		console.log(e.target.value);
 	};
-
+	const fetchCategory = () => {
+		return axios({
+			method: 'GET',
+			url: `${process.env.REACT_APP_API_URL}/api/v1/categories/getAll`,
+		})
+			.then((res) => {
+				const data = res.data;
+				console.log(data);
+				const newData = data.map((item, index) => {
+					return {
+						stt: index + 1, // stt start = 1
+						id: item._id,
+						title: item.title,
+						image: item.image,
+						short_title: item.short_title,
+					};
+				});
+				setDataCategory(newData);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+	useEffect(() => {
+		fetchCategory();
+	}, [dataCategory.length]);
 	return (
-		<div className="info__container">
+		<div className="info__container basic_info">
 			<h3 className="info__title">THÔNG TIN CƠ BẢN</h3>
 			<div className="info__form-group col-full">
 				<label htmlFor="title" className="info__form-label">
@@ -64,16 +92,22 @@ const BasicInfo = ({ basicInfo, setBasicInfo }) => {
 						<label htmlFor="category" className="info__form-label">
 							Phân loại <span className="text-red">*</span>
 						</label>
-						<input
-							className="info__form-input"
-							id="category"
-							name="category"
-							type="text"
-							placeholder="Nhập phân loại món ăn"
-							{...register('category')}
-							value={category}
-							onChange={handleChangeInfo}
-						/>
+						<div className="select__items">
+							<select
+								className="info__form-input"
+								name="category"
+								{...register('category')}
+								onChange={handleChangeInfo}
+							>
+								<option value="">Vui lòng chọn phân loại</option>
+								{dataCategory.map((option) => (
+									<option key={option.id} value={option.short_title}>
+										{option.short_title}
+									</option>
+								))}
+							</select>
+							<img className="icon_down" src={arrowDown} alt="arrowDown" />
+						</div>
 						<p className={errors.category?.message ? 'active' : 'non-active'}>
 							{errors.category?.message}
 						</p>
@@ -123,6 +157,29 @@ const BasicInfo = ({ basicInfo, setBasicInfo }) => {
 							value={cookTime}
 							onChange={handleChangeInput}
 						/>
+					</div>
+					<div className="info__form-group">
+						<label htmlFor="category" className="info__form-label">
+							Độ khó <span className="text-red">*</span>
+						</label>
+						<div className="select__items">
+							<select
+								className="info__form-input"
+								placeholder="Chọn độ khó"
+								name="difficulty"
+								{...register('difficulty')}
+								onChange={handleChangeInfo}
+							>
+								<option value="">Vui lòng chọn độ khó</option>
+								<option value="Dễ">Dễ</option>
+								<option value="Trung bình">Trung bình</option>
+								<option value="Khó">Khó</option>
+							</select>
+							<img className="icon_down" src={arrowDown} alt="arrowDown" />
+						</div>
+						<p className={errors.difficulty?.message ? 'active' : 'non-active'}>
+							{errors.difficulty?.message}
+						</p>
 					</div>
 				</div>
 			</div>

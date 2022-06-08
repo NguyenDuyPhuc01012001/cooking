@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { useFormContext } from 'react-hook-form';
 const Instruction = ({ instructionList, setInstructionList }) => {
+	const maxInstruction = 50;
 	const handleInstructionChange = (e, index) => {
 		const { name, value } = e.target;
 		const list = [...instructionList];
@@ -52,7 +53,7 @@ const Instruction = ({ instructionList, setInstructionList }) => {
 					</div>
 					<div className="info__form-group col-full">
 						{instructionList.length - 1 === index &&
-							instructionList.length < 4 && (
+							instructionList.length < maxInstruction && (
 								<button
 									type="button"
 									onClick={handleInstructionAdd}

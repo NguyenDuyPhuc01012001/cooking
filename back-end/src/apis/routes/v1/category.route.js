@@ -3,7 +3,7 @@ const router = express.Router()
 
 const { cateController } = require('../../controllers')
 
-router.get('/', cateController.getCategories)
-// router.get('/:cateID/types', cateController.getTypesByCategory)
+router.get('/', cateController.getCategoriesAdmin)
+router.get('/getAll', cateController.getCategories)
 
 module.exports = router

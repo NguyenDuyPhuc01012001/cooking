@@ -19,9 +19,9 @@ const ConfirmEmail = ({ email, handleShowUpdateInformation, handleClose }) => {
 
 	const sendVerificationEmail = (email) => {
 		setError('');
-		const token = Cookies.get('token');
-		console.log(token);
-		axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+		// const token = Cookies.get('token');
+		// console.log(token);
+		// axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
 
 		axios
 			.post(
@@ -37,6 +37,7 @@ const ConfirmEmail = ({ email, handleShowUpdateInformation, handleClose }) => {
 				);
 			})
 			.catch((err) => {
+				console.log(err);
 				setError('Lỗi mạng không xác định');
 			});
 	};

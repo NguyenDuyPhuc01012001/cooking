@@ -27,7 +27,7 @@ const ActivationEmail = () => {
 	return (
 		<Fragment>
 			<div className="activation-container">
-				<h1>{announce}</h1>
+				<h3>{announce}</h3>
 				<button
 					onClick={() => history.replace('/')}
 					className="activation-custom-btn"

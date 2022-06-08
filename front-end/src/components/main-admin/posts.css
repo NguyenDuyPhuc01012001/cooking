@@ -35,7 +35,7 @@
 	margin-top: 16px;
 }
 
-.posts__lablel {
+.posts__label {
 	font-style: normal;
 	font-weight: 500;
 	font-size: 1rem;
@@ -268,7 +268,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	display: flex;
 	flex-direction: column;
 	width: 440px;
-	height: 197px;
+	height: auto;
 	background: #ffffff;
 	border: 0px solid #ffffff;
 	border-radius: 20px;
@@ -315,7 +315,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .modal__row-3 {
-	margin-top: 24px;
+	margin: 24px 0;
 	display: flex;
 	justify-content: space-between;
 }

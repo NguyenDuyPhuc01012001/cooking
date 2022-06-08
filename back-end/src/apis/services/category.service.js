@@ -1,8 +1,18 @@
-const {Category} =require('../models')
+const { Category } = require('../models')
+const env = require('../../configs/env')
 
-const getCategories= async ()=>{
-    return Category.find({});
+const getCategories = async (page) => {
+    let categories = await Category.find({})
+        .limit(env.pageAdminLimit)
+        .skip(env.pageAdminLimit * page)
+    const countCategory = await Category.countDocuments({})
+    return { categories, lengthDocuments: countCategory }
 }
-module.exports={
-    getCategories
+
+const getAllCategories = async () => {
+    return Category.find({})
+}
+module.exports = {
+    getCategories,
+    getAllCategories,
 }

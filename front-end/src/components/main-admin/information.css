@@ -1,27 +1,20 @@
-.information-very-big-container {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-}
-.information-manager-container {
-	align-self: center;
-	width: 708px;
-	height: auto;
-	margin-top: 16px;
-	background: #ffffff;
-	border-radius: 10px;
-}
 .information-content-container {
-	margin-left: 24px;
-	padding-top: 16px;
+	align-self: center;
+	width: 96%;
+	/* height: 770px; */
+	float: right;
+	height: 97%;
+	background-color: white;
+	margin: 16px 24px 24px 0;
 	display: flex;
 	flex-direction: column;
+	border-radius: 10px;
+	padding: 1.5rem;
 }
 .information-big-title {
 	font-size: 1.5rem;
 	font-style: normal;
 	font-weight: 500;
-	line-height: 21px;
 	letter-spacing: 0em;
 	text-align: left;
 }
@@ -93,7 +86,7 @@ div.information-image-container {
 .information-management-input-field {
 	margin-top: 12px;
 	height: 40px;
-	width: 660px;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -105,7 +98,7 @@ div.information-image-container {
 .wrong-information-management-input-field {
 	margin-top: 12px;
 	height: 40px;
-	width: 660px;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -132,7 +125,7 @@ div.information-image-container {
 	padding: 12px 8px 12px 16px;
 	margin-top: 12px;
 	height: 152px;
-	width: 660px;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	background: #ffffff;
@@ -239,4 +232,10 @@ textarea.overview-information-management-input::-webkit-scrollbar-thumb {
 	background-clip: padding-box;
 	border-radius: 9999px;
 	background-color: #aaaaaa;
+}
+
+.two_column {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
 }

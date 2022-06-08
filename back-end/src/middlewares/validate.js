@@ -11,6 +11,7 @@ module.exports = (schema) => (req, res, next) => {
         .prefs({ errors: { label: 'key' }, abortEarly: false })
         .validate(object)
     if (error) {
+        console.log('err here')
         const errorMessage = error.details.map((details) => details.message).join(', ')
         return next(new CustomError(httpStatus.BAD_REQUEST, errorMessage))
     }

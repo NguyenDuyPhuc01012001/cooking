@@ -157,7 +157,6 @@ function Header() {
 		Cookies.remove('bearerToken');
 		Cookies.remove('token');
 		const Token = Cookies.get('token');
-		console.log('cookie123', Token);
 		window.location.reload();
 	};
 	const handleUpdateConfirmation = () => {
@@ -321,19 +320,20 @@ function Header() {
 										renderItems={(item, index) => renderUserMenu(item, index)}
 										renderFooter={() => (
 											<a href="/user">
-												<hr width="100%" />{' '}
+												<hr width="100%" />
 												<button onClick={handleLogout} className="footer_btn">
 													Đăng xuất
 													<img src={ic_logout} alt="" className="ic-logout" />
-												</button>{' '}
+												</button>
 											</a>
 										)}
 									/>
 								</li>
 							)}
 						</div>
+						<hr width="100%" />
 						<Link to="/user/create/recipe">
-							<hr width="100%" /> <button className="post-btn">Đăng bài</button>{' '}
+							<button className="post-btn">Đăng bài</button>
 						</Link>
 					</ul>
 				)}

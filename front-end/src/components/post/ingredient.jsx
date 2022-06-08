@@ -3,7 +3,7 @@ import arrowDown from '../../assets/image/arrow-down.svg';
 
 const Ingredient = ({ ingredientList, setIngredientList }) => {
 	// const [{ ingredient }] = ingredientList;
-
+	const maxIngredient = 100;
 	const handleIngredientChange = (e, index) => {
 		const { name, value } = e.target;
 		const list = [...ingredientList];
@@ -52,15 +52,16 @@ const Ingredient = ({ ingredientList, setIngredientList }) => {
 						</div>
 					</div>
 					<div className="info__form-group col-full">
-						{ingredientList.length - 1 === index && ingredientList.length < 4 && (
-							<button
-								type="button"
-								onClick={handleIngredientAdd}
-								className="add-btn"
-							>
-								<i class="fa fa-plus"></i>
-							</button>
-						)}
+						{ingredientList.length - 1 === index &&
+							ingredientList.length < maxIngredient && (
+								<button
+									type="button"
+									onClick={handleIngredientAdd}
+									className="add-btn"
+								>
+									<i class="fa fa-plus"></i>
+								</button>
+							)}
 					</div>
 				</div>
 			))}

@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const moment = require('moment')
-
+const httpStatus = require('http-status')
+const CustomError = require('../../utils/custom-error')
 const env = require('../../configs/env')
 
 /**
@@ -19,6 +20,9 @@ const generateToken = (user) => {
         email: user.email,
         isVerifyEmail: user.isVerifyEmail,
     }
+    if (user.isVerifyEmail == false) {
+        throw new CustomError(httpStatus.FORBIDDEN, 'User not verify email')
+    }
     return jwt.sign(payload, env.passport.jwtToken, {
         expiresIn: env.passport.jwtAccessExpired,
     })
@@ -31,7 +35,7 @@ const generateVerifyEmailToken = (email) => {
         },
         process.env.PASSPORT_JWT_ACCOUNT_ACTIVATION,
         {
-            expiresIn: '5m',
+            expiresIn: '24h',
         }
     )
     return verifyEmailToken

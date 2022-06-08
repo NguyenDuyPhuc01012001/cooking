@@ -16,6 +16,6 @@ router.get('/getAll/user', recipeController.getRecipesUser)
 router.get('/:recipeID', validate(recipeValidation.getRecipeInfoByID), recipeController.getRecipeInfo)
 
 router.delete('/:recipeID', checkUserLogged, validate(recipeValidation.getRecipeInfoByID), recipeController.deleteRecipe)
-router.post('/', validate(recipeValidation.createRecipeSchema), recipeController.createRecipe)
+router.post('/', checkUserLogged, validate(recipeValidation.createRecipeSchema), recipeController.createRecipe)
 
 module.exports = router

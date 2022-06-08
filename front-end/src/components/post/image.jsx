@@ -2,9 +2,15 @@ import React, { useEffect, useCallback } from 'react';
 import image from '../../assets/image/image.svg';
 import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
+import { useForm, useFormContext } from 'react-hook-form';
 import { FaTimes } from 'react-icons/fa';
 
 const Image = ({ files, setFiles, fileLength }) => {
+	const {
+		register,
+		formState: { errors },
+		getValues,
+	} = useFormContext();
 	const onDrop = useCallback((acceptedFiles, rejectFiles) => {
 		if (rejectFiles.length > 0) {
 			alert(
@@ -26,7 +32,7 @@ const Image = ({ files, setFiles, fileLength }) => {
 		accept: ['image/*'],
 		maxSize: 5 * 1024 * 1024,
 		minSize: 10 * 1024,
-		multiple: true,
+		multiple: false,
 		maxFiles: 1,
 	});
 
@@ -73,7 +79,14 @@ const Image = ({ files, setFiles, fileLength }) => {
 
 			{fileLength === 0 ? (
 				<div {...getRootProps()} className="image__content">
-					<input {...getInputProps()} />
+					<input
+						{...getInputProps()}
+						// required
+						id="file"
+						type="file"
+						value={files}
+						// {...register('file')}
+					/>
 					{isDragActive ? (
 						<p className="item__content-text text-primary"> Thả ảnh ở đây</p>
 					) : (
@@ -88,7 +101,13 @@ const Image = ({ files, setFiles, fileLength }) => {
 					{thumbs}
 					{fileLength >= 1 ? null : (
 						<div {...getRootProps()} className="image__drop-zone">
-							<input {...getInputProps()} />
+							<input
+								{...getInputProps()}
+								id="file"
+								name="file"
+								value={files}
+								// {...register('file')}
+							/>
 							{isDragActive ? (
 								<p className="image__drop-zone-text text-primary">
 									{' '}
@@ -103,6 +122,9 @@ const Image = ({ files, setFiles, fileLength }) => {
 					)}
 				</div>
 			)}
+			{errors.file?.message ? (
+				<p style={{ color: 'red' }}>{errors.file?.message}</p>
+			) : null}
 		</div>
 	);
 };

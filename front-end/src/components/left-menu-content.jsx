@@ -30,6 +30,7 @@ const Content = React.lazy(() => import('./main-admin/content.jsx'));
 const Accounts = React.lazy(() => import('./main-admin/accounts.jsx'));
 const CreateAccount = React.lazy(() => import('./main-admin/createAcc.jsx'));
 const Posts = React.lazy(() => import('./main-admin/posts.jsx'));
+const Categories = React.lazy(() => import('./main-admin/categories.jsx'));
 const News = React.lazy(() => import('./main-admin/news.jsx'));
 const Information = React.lazy(() => import('./main-admin/information.jsx'));
 const Profile = React.lazy(() => import('./main-admin/profile/profile.jsx'));
@@ -46,6 +47,14 @@ const userService = [
 		link: '/admin/posts',
 		Component: Posts,
 	},
+	{
+		name: 'Quản lý loại',
+		icon: news,
+		hover: b_news,
+		focus: w_news,
+		link: '/admin/categories',
+		Component: Categories,
+	},
 ];
 
 const adminService = [
@@ -60,9 +69,9 @@ const adminService = [
 	},
 	{
 		name: 'Tạo tài khoản',
-		icon: news,
-		hover: b_news,
-		focus: w_news,
+		icon: account,
+		hover: b_account,
+		focus: w_account,
 		link: '/admin/create',
 		Component: CreateAccount,
 	},
@@ -72,7 +81,7 @@ const adminService = [
 	// 	hover: b_news,
 	// 	focus: w_news,
 	// 	link: '/admin/news',
-	// 	Component: News,
+	// 	Component: Categories,
 	// },
 	{
 		name: 'Quản lý thông tin',

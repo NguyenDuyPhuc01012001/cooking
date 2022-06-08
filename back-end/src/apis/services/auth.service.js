@@ -9,7 +9,7 @@ const CustomError = require('../../utils/custom-error')
 const env = require('../../configs/env')
 
 const sendVerificationEmail = async (verifyEmailToken, email) => {
-    console.log(env.app.schema)
+    console.log(email)
     const url = `${process.env.CLIENT_URL}/activate/${verifyEmailToken}`
     const emailData = {
         from: '19522038@gm.uit.edu.vn', //must use only this email which is registered with account in website Sendgrid cuz this account owns MAIL_KEY
@@ -20,7 +20,7 @@ const sendVerificationEmail = async (verifyEmailToken, email) => {
             <h2 style="text-align: center; text-transform: uppercase;color: teal;">____ website</h2>
             <p>______ xin chào bạn! <br>
             Chỉ một bước duy nhất nữa thôi, bạn sẽ chính thức trở thành một trong những admin của trang web chúng tôi.<br>
-            Một đường dẫn xác thực đã được tạo và có hiệu lực trong vòng <span style="color: crimson"> <b>5 phút</b></span>!<br>
+            Một đường dẫn xác thực đã được tạo và có hiệu lực trong vòng <span style="color: crimson"> <b>24 giờ</b></span>!<br>
             Vui lòng chọn vào nút xác thực để hoàn tất thủ tục.
             </p>
 
@@ -48,9 +48,15 @@ const activateEmailToken = async (verifyEmailToken) => {
         throw new CustomError('402', err.message)
     }
 }
+const validateResetPasswordToken = async (resetPasswordToken) => {
+    try {
+        jwt.verify(resetPasswordToken, process.env.PASSPORT_JWT_RESET_PASSWORD)
+    } catch (err) {
+        throw new CustomError('402', err.message)
+    }
+}
 
 const sendResetPasswordEmail = async (resetPasswordToken, email) => {
-    console.log(env.app.schema)
     const url = `${process.env.CLIENT_URL}/reset/${resetPasswordToken}`
     const emailData = {
         from: '19522038@gm.uit.edu.vn', //must use only this email which is registered with account in website Sendgrid cuz this account owns MAIL_KEY
@@ -104,6 +110,7 @@ const logout = async (refreshToken) => {
 module.exports = {
     sendVerificationEmail,
     activateEmailToken,
+    validateResetPasswordToken,
     logout,
     sendResetPasswordEmail,
     resetPassword,

@@ -34,7 +34,7 @@ const footerCols = [
 		items: [
 			{
 				name: 'Về công ty',
-				link: '/upcoming',
+				link: '/user/information',
 			},
 			{
 				name: 'Quy chế hoạt động',

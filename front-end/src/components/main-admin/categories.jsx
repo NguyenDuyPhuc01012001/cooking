@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Fragment } from 'react/cjs/react.production.min';
 import './posts.css';
 import axios from 'axios';
@@ -17,11 +17,10 @@ const initialDateFilter = {
 	provinceID: '',
 	page: 0,
 };
-function Posts() {
+function Categories() {
 	const [dataFilter, setDataFilter] = useState(initialDateFilter);
-	const [dataRecipe, setDataRecipe] = useState([]);
 	const [dataCategory, setDataCategory] = useState([]);
-	const [postClick, setPostClick] = useState({ id: '' });
+	const [postClick, setpostClick] = useState({ id: '' });
 	const Token = Cookies.get('token');
 
 	////////////////////////////////////////////////////////////////
@@ -53,33 +52,6 @@ function Posts() {
 	const fetchData = () => {
 		return axios({
 			method: 'GET',
-			url: `${process.env.REACT_APP_API_URL}/api/v1/recipe/getAll/admin?title=${dataFilter.title}&category=${dataFilter.category}&difficulty=${dataFilter.difficulty}&page=${currentPage}`,
-			headers: {
-				Authorization: 'Bearer ' + Token,
-			},
-		})
-			.then((res) => {
-				const data = res.data.recipes;
-				const newData = data.map((item, index) => {
-					return {
-						stt: index + 1, // stt start = 1
-						id: item._id,
-						title: item.title,
-						category: item.category,
-						difficulty: item.difficulty,
-						author: item.author.fullName,
-					};
-				});
-				setDataRecipe(newData);
-				setLstLength(res.data.lengthDocuments);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	};
-	const fetchCategory = () => {
-		return axios({
-			method: 'GET',
 			url: `${process.env.REACT_APP_API_URL}/api/v1/categories/?page=${currentPage}`,
 			headers: {
 				Authorization: 'Bearer ' + Token,
@@ -93,10 +65,11 @@ function Posts() {
 						id: item._id,
 						title: item.title,
 						image: item.image,
-						short_title: item.short_title,
+						link: item.short_title + '?page=0',
 					};
 				});
 				setDataCategory(newData);
+				setLstLength(res.data.lengthDocuments);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -104,7 +77,6 @@ function Posts() {
 	};
 	useEffect(() => {
 		fetchData();
-		fetchCategory();
 	}, [currentPage]);
 
 	const handleChange = (e) => {
@@ -118,19 +90,16 @@ function Posts() {
 	const removePost = async () => {
 		await axios({
 			method: 'DELETE',
-			url: `${process.env.REACT_APP_API_URL}/api/v1/recipe/${postClick.id}`,
+			url: `${process.env.REACT_APP_API_URL}/api/v1/categories/${postClick.id}`,
 			headers: {
 				Authorization: 'Bearer ' + Token,
 			},
 		})
-			.then((res) => {
-				closeModal();
-				window.location.reload();
-			})
+			.then((res) => {})
 			.catch((err) => {
 				console.log(err);
 			});
-		closeModal();
+		setIsOpen(false);
 		window.location.reload();
 	};
 
@@ -158,80 +127,23 @@ function Posts() {
 	return (
 		<Fragment>
 			<div className="posts__container">
-				<div className="posts__row">
-					<div className="posts__filter span__title__filter">
-						<label className="posts__label">Tiêu đề</label>
-						<input
-							type="text"
-							className="posts__input-dateFrom posts__input"
-							placeholder="Nhập tiêu đề công thức"
-							name="title"
-							onChange={handleChange}
-						></input>
-					</div>
-					<div className="posts__filter">
-						<button className="posts__button-search" onClick={fetchData}>
-							Tìm kiếm
-						</button>
-					</div>
-				</div>
-				<div className="posts__row">
-					<div className="posts__filter filter-2">
-						<label className="posts__label">Phân loại</label>
-						<div className="select__container">
-							<select
-								className="posts__input-dateFrom posts__input"
-								placeholder="Tất cả"
-								name="category"
-								onChange={handleChange}
-							>
-								<option value="">Tất cả</option>
-								{dataCategory.map((option) => (
-									<option key={option.id} value={option.short_title}>
-										{option.short_title}
-									</option>
-								))}
-							</select>
-						</div>
-					</div>
-					<div className="posts__filter filter-2">
-						<label className="posts__label">Độ khó</label>
-						<div className="select__container">
-							<select
-								className="posts__input-dateFrom posts__input"
-								placeholder="Tất cả"
-								name="difficulty"
-								onChange={handleChange}
-							>
-								<option value="">Tất cả</option>
-								<option value="Dễ">Dễ</option>
-								<option value="Trung bình">Trung bình</option>
-								<option value="Khó">Khó</option>
-							</select>
-						</div>
-					</div>
-				</div>
-
 				<div className="posts__content">
-					{/*  */}
-					{dataRecipe.length > 0 ? (
+					{dataCategory.length > 0 ? (
 						<table className="posts__table">
 							<tr style={{ height: '48px' }}>
 								<th style={{ width: '5%', textAlign: 'center' }}>STT</th>
 								<th style={{ width: '2%' }}></th> {/* Lấy khoảng trống} */}
-								<th style={{ width: '30%', textAlign: 'left' }}>Tiêu đề</th>
+								<th style={{ width: '15%', textAlign: 'left' }}>Phân loại</th>
 								<th style={{ width: '2%' }}></th>
-								<th style={{ width: '10%' }}>Phân loại</th>
-								<th style={{ width: '10%' }}>Độ khó</th>
-								<th style={{ width: '10%' }}>Tên người đăng</th>
+								<th style={{ width: '60%' }}>Hình ảnh</th>
 								<th style={{ width: '3%' }}></th>
 								<th style={{ width: '3%' }}></th>
 							</tr>
-							{dataRecipe.map((data, index) => (
+							{dataCategory.map((data, index) => (
 								<tr
 									style={{
 										height: '40px',
-										backgroundColor: index % 2 === 0 ? '#F9F9F9' : '#FFFFFF',
+										backgroundColor: index % 2 == 0 ? '#F9F9F9' : '#FFFFFF',
 									}}
 								>
 									<td style={{ textAlign: 'center' }}>
@@ -240,16 +152,16 @@ function Posts() {
 									<td></td> {/* Lấy khoảng trống} */}
 									<td style={{ color: '#3eadcf', wordBreak: 'break-all' }}>
 										<Link
-											to={`/user/recipe/${data.id}`}
+											to={`/user/category/${data.link}`}
 											style={{ fontWeight: 500 }}
 										>
 											{data.title}
 										</Link>
 									</td>
 									<td></td> {/* Lấy khoảng trống} */}
-									<td>{data.category}</td>
-									<td>{data.difficulty}</td>
-									<td>{data.author}</td>
+									<td>
+										<a href={data.image}>{data.image}</a>
+									</td>
 									<td></td> {/* Lấy khoảng trống} */}
 									<td>
 										<td>
@@ -262,21 +174,13 @@ function Posts() {
 											>
 												<div>
 													<a href="/upcoming" style={{ fontWeight: 500 }}>
-														Sửa bài đăng
+														Sửa phân loại
 													</a>
 												</div>
 												<div style={{ borderTop: '1px solid #000000' }}>
-													<button
-														style={{ fontWeight: 500 }}
-														onClick={(e) => {
-															e.stopPropagation();
-															$('.btn-option' + index).toggle();
-															openModal();
-															setPostClick({ id: data.id });
-														}}
-													>
-														Xóa bài đăng
-													</button>
+													<a href="/upcoming" style={{ fontWeight: 500 }}>
+														Xóa phân loại
+													</a>
 												</div>
 											</div>
 										</td>
@@ -311,13 +215,13 @@ function Posts() {
 								activeClassName="active"
 							/>
 						</div>
-						<a
+						{/* <a
 							href="/user/create/recipe"
 							className="posts__btn-news"
 							style={{ margin: '16px', float: 'right', fontWeight: 500 }}
 						>
 							Đăng tin mới
-						</a>
+						</a> */}
 					</div>
 				</div>
 			</div>
@@ -331,13 +235,11 @@ function Posts() {
 			>
 				<div className="posts__modal">
 					<div className="modal__row-1">
-						<h1>Xóa bài đăng</h1>
+						<h1>Xóa phân loại</h1>
 					</div>
 
 					<div className="modal__row-2">
-						<span>
-							Bạn có muốn xóa bài đăng ra khỏi danh sách bài đăng không?
-						</span>
+						<span>Bạn có muốn xóa loại công thức ra khỏi danh sách không?</span>
 					</div>
 
 					<div className="modal__row-3">
@@ -353,7 +255,7 @@ function Posts() {
 							style={{ fontWeight: 500 }}
 							onClick={removePost}
 						>
-							Xóa bài đăng
+							Xóa
 						</button>
 					</div>
 				</div>
@@ -362,4 +264,4 @@ function Posts() {
 	);
 }
 
-export default Posts;
+export default Categories;

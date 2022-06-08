@@ -208,30 +208,30 @@ function Information() {
 
 	return (
 		<Fragment>
-			<div className="information-very-big-container">
-				<div className="information-manager-container">
-					<div className="information-content-container">
-						<div className="information-big-title">Thông tin công ty</div>
-						<div className="m-top-12 information-medium-title">Ảnh công ty</div>
-						<div className="m-top-12 information-image-container">
-							<div className="information-image">
-								<img
-									className="information-image image"
-									src={image.value}
-									hidden={image.value ? false : true}
-								/>
-							</div>
-							<div className="information-management-input-container">
-								<input
-									className="custom-file-input"
-									onChange={handleUploadImage}
-									type="file"
-								/>
-								<div className="upload-constraint m-top-8">
-									Chỉ JPG, GIF hoặc PNG lớn nhất là 10MB
-								</div>
-							</div>
+			<div className="information-content-container">
+				<div className="information-big-title">Thông tin công ty</div>
+				<div className="m-top-12 information-medium-title">Ảnh công ty</div>
+				<div className="m-top-12 information-image-container">
+					<div className="information-image">
+						<img
+							className="information-image image"
+							src={image.value}
+							hidden={image.value ? false : true}
+						/>
+					</div>
+					<div className="information-management-input-container">
+						<input
+							className="custom-file-input"
+							onChange={handleUploadImage}
+							type="file"
+						/>
+						<div className="upload-constraint m-top-8">
+							Chỉ JPG, GIF hoặc PNG lớn nhất là 10MB
 						</div>
+					</div>
+				</div>
+				<div className="two_column">
+					<div>
 						<div className="m-top-16 information-management-input-title">
 							Tên công ty
 						</div>
@@ -254,6 +254,8 @@ function Information() {
 								Tên công ty không được để trống
 							</small>
 						)}
+					</div>{' '}
+					<div>
 						<div className="m-top-16 information-management-input-title">
 							Khẩu hiệu
 						</div>
@@ -277,36 +279,37 @@ function Information() {
 								Khẩu hiệu của công ty không được để trống
 							</small>
 						)}
-						<div className="m-top-16 information-management-input-title">
-							Tổng quan
-						</div>
-						<div
-							className={
-								validOverview
-									? 'overview-information-management-input-field'
-									: 'wrong- overview-information-management-input-field'
-							}
-						>
-							<textarea
-								className="overview-information-management-input"
-								value={overview}
-								onChange={(e) => dispatch(setOverview(e.target.value))}
-								placeholder="Tổng quan về công ty"
-							/>
-						</div>
-						{!validOverview && (
-							<small className="information-small">
-								Tổng quan về công ty không được để trống
-							</small>
-						)}
-						<button
-							onClick={handleClick}
-							className="information-container-save-btn"
-						>
-							Lưu
-						</button>
 					</div>
 				</div>
+
+				<div className="m-top-16 information-management-input-title">
+					Tổng quan
+				</div>
+				<div
+					className={
+						validOverview
+							? 'overview-information-management-input-field'
+							: 'wrong- overview-information-management-input-field'
+					}
+				>
+					<textarea
+						className="overview-information-management-input"
+						value={overview}
+						onChange={(e) => dispatch(setOverview(e.target.value))}
+						placeholder="Tổng quan về công ty"
+					/>
+				</div>
+				{!validOverview && (
+					<small className="information-small">
+						Tổng quan về công ty không được để trống
+					</small>
+				)}
+				<button
+					onClick={handleClick}
+					className="information-container-save-btn"
+				>
+					Lưu
+				</button>
 			</div>
 		</Fragment>
 	);

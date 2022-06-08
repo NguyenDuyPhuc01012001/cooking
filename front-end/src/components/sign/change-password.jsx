@@ -1,21 +1,19 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Fragment } from 'react/cjs/react.production.min';
 import './change-password.css';
 
-import exit from '../../assets/forgot_password/exit.png';
 import eyeOn from '../../assets/sign_up/eye_on.png';
 import eyeOff from '../../assets/sign_up/eye_off.png';
 import { checkValidPassword } from './valid-password';
 import axios from 'axios';
 import { showErrMsg } from './notification/notification';
-import Cookies from 'js-cookie';
 import { useHistory, useParams } from 'react-router-dom';
 import WebFont from 'webfontloader';
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
+
 function ChangePassword() {
 	const history = useHistory();
 	const { reset_token } = useParams();
-	const [announce, setAnnounce] = useState();
 	const [password, setPassword] = useState();
 	const [rePassword, setRePassword] = useState('');
 	const [isValidPassword, setIsValidPassword] = useState(true);
@@ -43,7 +41,7 @@ function ChangePassword() {
 	}
 	function getRePasswordError(password, rePassword) {
 		let errorMessage = '';
-		if (rePassword == password && rePassword && password) {
+		if (rePassword === password && rePassword && password) {
 			setIsValidRePassword(true);
 			return;
 		} else {
@@ -63,23 +61,29 @@ function ChangePassword() {
 				families: ['Roboto:400,500'],
 			},
 		});
+		// console.log('checking');
 		if (reset_token) {
-			try {
-				jwt.verify(
-					reset_token,
-					process.env.REACT_APP_PASSPORT_JWT_RESET_PASSWORD
-				);
-			} catch (err) {
-				setIsValidToken(false);
-			}
+			axios
+				.post(
+					`${process.env.REACT_APP_API_URL}/api/v1/auth/validateResetToken`,
+					{
+						token: reset_token,
+					}
+				)
+				.then((res) => {
+					setIsValidToken(true);
+				})
+				.catch((error) => {
+					setIsValidToken(false);
+				});
 		}
 	}, [reset_token]);
 	const handleClick = () => {
 		setError('');
 		getPasswordError(password);
 		getRePasswordError(password, rePassword);
-		if (isValidPassword && password && rePassword && password == rePassword) {
-			console.log('actiavtion token is' + reset_token);
+		if (isValidPassword && password && rePassword && password === rePassword) {
+			console.log('activation token is' + reset_token);
 			if (reset_token) {
 				//ham reset password
 				resetPassword(reset_token, password);
@@ -127,7 +131,6 @@ function ChangePassword() {
 		<Fragment>
 			<div className="change-pass-main-container">
 				<div className="bg-white">
-					{' '}
 					<div className="change-pass-container">
 						<div className="change-pass-header">
 							<span></span>
@@ -147,18 +150,16 @@ function ChangePassword() {
 								<input
 									value={password}
 									onChange={(e) => setPassword(e.target.value)}
-									className="input-sign-up required"
+									className="input-chang-pass required"
 									type={inputType}
 									required="required"
+									placeholder="Mật khẩu"
 								/>
-								<div className="placeholder">
-									Mật khẩu <span className="require">*</span>
-								</div>
 								<button
 									onClick={changePassVisibility}
 									className="m-right-5-per"
 								>
-									<img src={passVisibility} />
+									<img src={passVisibility} alt="eye" />
 								</button>
 							</div>
 
@@ -173,18 +174,16 @@ function ChangePassword() {
 								<input
 									value={rePassword}
 									onChange={(e) => setRePassword(e.target.value)}
-									className="input-sign-up required"
+									className="input-chang-pass required"
 									type={reInputType}
 									required="required"
+									placeholder="Nhập lại mật khẩu"
 								/>
-								<div className="placeholder">
-									Nhập lại mật khẩu <span className="require">*</span>
-								</div>
 								<button
 									onClick={changeRePassVisibility}
 									className="m-right-5-per"
 								>
-									<img src={rePassVisibility} />
+									<img src={rePassVisibility} alt="eye" />
 								</button>
 							</div>
 							{!isValidRePassword && (

@@ -30,6 +30,7 @@
 .post__container {
 	display: flex;
 	width: 100%;
+	margin: 1rem 0;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -139,8 +140,7 @@
 	margin-top: 12px;
 	height: 48px;
 	padding: 16px;
-	border-color: #63a4ff;
-	border-width: 1px;
+	border: 1px solid #3eadcf;
 	border-radius: 10px;
 	outline: none;
 	font-size: 14px;
@@ -151,15 +151,15 @@
 
 select.info__form-input {
 	width: 100%;
-	margin: 0;
+	/* margin: 0; */
 	padding-top: 15px;
 	appearance: none !important;
 }
 
 select.info__form-input option {
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 500;
-	line-height: 20px;
+	line-height: 30px;
 	color: #000000;
 }
 

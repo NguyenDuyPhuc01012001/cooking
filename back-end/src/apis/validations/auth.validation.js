@@ -27,6 +27,12 @@ const activateEmailTokenSchema = {
     }),
 }
 
+const validateResetPasswordTokenSchema = {
+    body: Joi.object().keys({
+        token: Joi.string(),
+    }),
+}
+
 const resetPasswordTokenSchema = {
     body: Joi.object().keys({
         token: Joi.string(),
