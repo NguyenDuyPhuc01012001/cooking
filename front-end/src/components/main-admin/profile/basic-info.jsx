@@ -1,9 +1,5 @@
-import React, { useEffect, Fragment, useState, useRef } from 'react';
-import ReactDOM, { render } from 'react-dom';
-import { useForm, useFormContext } from 'react-hook-form';
-import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-import arrowDown from '../../../assets/image/arrow-down.svg';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 import './basic-info.css';
 
 const BasicInfo = ({ data, setBasicInfo, setFiles }) => {
@@ -126,7 +122,7 @@ const BasicInfo = ({ data, setBasicInfo, setFiles }) => {
 								<label className="custom-radio-btn">
 									<input
 										value="Nam"
-										checked={gender == 'Nam'}
+										checked={gender === 'Nam'}
 										onChange={(e) => {
 											setBasicInfo(e);
 										}}
@@ -140,7 +136,7 @@ const BasicInfo = ({ data, setBasicInfo, setFiles }) => {
 								<label className="custom-radio-btn">
 									<input
 										value="Nữ"
-										checked={gender == 'Nữ'}
+										checked={gender === 'Nữ'}
 										onChange={(e) => {
 											setBasicInfo(e);
 										}}

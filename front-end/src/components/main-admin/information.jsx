@@ -1,8 +1,8 @@
-import React, { Component, useEffect, useReducer, useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useReducer, useState } from 'react';
+import { toast } from 'react-toastify';
 import { Fragment } from 'react/cjs/react.production.min';
 import './information.css';
-import axios from 'axios';
-import { toast, ToastPosition } from 'react-toastify';
 //#region value reducer
 const SET_NAME = 'set_name';
 const SET_SLOGAN = 'set_slogan';

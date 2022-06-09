@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import './Introduction.css';
-import { Fragment } from 'react/cjs/react.production.min';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Fragment } from 'react/cjs/react.production.min';
+import './Introduction.css';
 export default function Introduction() {
 	const [info, setInfo] = useState([]);
 	const baseUrl = `${process.env.REACT_APP_API_URL}/api/v1/company/info/`;

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Link, useLocation, useParams, useHistory } from 'react-router-dom';
-import { Fragment } from 'react/cjs/react.production.min';
-import './category.css';
 import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
-import Type from '../home/type';
+import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
+import { Fragment } from 'react/cjs/react.production.min';
 import { LoadRecipeBySearch } from '../../redux/action';
+import './category.css';
 
 function Search() {
 	const findBySearchLink = '/user/search';
@@ -75,7 +73,7 @@ function Search() {
 			<div className="wrapper">
 				<div className="body__container ">
 					<div className="grid_recipes">
-						{dataRecipeBySearch.length != 0 ? (
+						{dataRecipeBySearch.length !== 0 ? (
 							dataRecipeBySearch.map((item, index) => {
 								return (
 									<div className="card_recipe" key={index}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 import './des_info.css';
 import './post-recipe.css';
-import { useForm, useFormContext } from 'react-hook-form';
 const DesInfo = ({ description, setDescription }) => {
 	const {
 		register,

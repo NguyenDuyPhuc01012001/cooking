@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Fragment } from 'react/cjs/react.production.min';
-import './information.css';
-
 import ActivityCarousel from './ActivityCarousel';
-import Introduction from './Introduction';
-import SpecialNewsCarousel from './SpecialNewsCarousel';
-import ImplementSection from './ImplementSection';
 import Banner from './Banner';
+import './information.css';
+import Introduction from './Introduction';
 import Slogan from './Slogan';
 
 class Information extends Component {

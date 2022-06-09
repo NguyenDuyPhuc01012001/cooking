@@ -1,12 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Fragment } from 'react';
-import { useHistory } from 'react-router-dom';
 import styles from './not-found-admin.module.scss';
 function NotFoundAdmin() {
-	const history = useHistory();
-	// const handleClick = () => {
-	//     history.push("/");
-	// }
 	return (
 		<Fragment>
 			<div className={styles.container}>

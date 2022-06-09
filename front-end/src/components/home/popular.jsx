@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import '../../assets/css/hot_and_types.css';
 import './home.css';
 function Popular() {

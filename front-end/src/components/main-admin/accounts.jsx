@@ -1,16 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
+import $ from 'jquery';
+import Cookies from 'js-cookie';
+import React, { useEffect, useState } from 'react';
+import Modal from 'react-modal';
+import ReactPaginate from 'react-paginate';
 import { Fragment } from 'react/cjs/react.production.min';
 import './accounts.css';
-import axios from 'axios';
-import Cookies from 'js-cookie';
-import ReactPaginate from 'react-paginate';
-import { Link } from 'react-router-dom';
-import $ from 'jquery';
-import Modal from 'react-modal';
-import Popup from 'reactjs-popup';
-import SignUp from '../sign/sign-up';
-import ConfirmEmail from '../sign/confirm-email';
-import UpdateInformation from '../sign/change-email';
 
 const initialDateFilter = {
 	sort: 0,
@@ -215,7 +210,7 @@ function Admin() {
 									<tr
 										style={{
 											height: '40px',
-											backgroundColor: index % 2 == 0 ? '#F9F9F9' : '#FFFFFF',
+											backgroundColor: index % 2 === 0 ? '#F9F9F9' : '#FFFFFF',
 										}}
 									>
 										<td style={{ textAlign: 'center' }}>
@@ -229,7 +224,7 @@ function Admin() {
 										<td></td> {/* Lấy khoảng trống} */}
 										<td>{data.birthday}</td>
 										<td>
-											{currentAdminId != data.id && (
+											{currentAdminId !== data.id && (
 												<button
 													onClick={(e) => {
 														e.stopPropagation();

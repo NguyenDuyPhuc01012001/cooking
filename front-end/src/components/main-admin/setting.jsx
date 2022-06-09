@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Fragment } from 'react/cjs/react.production.min';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 class Admin extends Component {
 	render() {

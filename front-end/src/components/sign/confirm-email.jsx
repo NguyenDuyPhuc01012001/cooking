@@ -1,12 +1,11 @@
-import React, { Component, useState, useEffect } from 'react';
-
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Fragment } from 'react/cjs/react.production.min';
 import exit from '../../assets/confirm_email/exit.png';
-import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
 import './confirm-email.css';
-import Cookies from 'js-cookie';
 import { showErrMsg } from './notification/notification';
+
 var posX = window.innerWidth;
 window.onresize = () => {
 	posX = window.innerWidth;
@@ -48,7 +47,7 @@ const ConfirmEmail = ({ email, handleShowUpdateInformation, handleClose }) => {
 					<span></span>
 					<span className="weight-500 m-top-28 font-24">Xác thực email</span>
 					<button className="m-top-28">
-						<img src={exit} />
+						<img src={exit} alt="x" />
 					</button>
 				</div>
 				{error && showErrMsg(error)}
@@ -85,7 +84,7 @@ const ConfirmEmail = ({ email, handleShowUpdateInformation, handleClose }) => {
 					<span></span>
 					<span className="weight-500 m-top-28 font-24">Xác thực email</span>
 					<button className="m-top-28" onClick={handleClose}>
-						<img src={exit} />
+						<img src={exit} alt="x" />
 					</button>
 				</div>
 				{error && showErrMsg(error)}

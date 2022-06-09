@@ -1,17 +1,12 @@
-import React, { Component } from 'react';
-import { Fragment } from 'react/cjs/react.production.min';
+import React from 'react';
 import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	useLocation,
-	Redirect,
+	BrowserRouter as Router, Route, Switch, useLocation
 } from 'react-router-dom';
-import Header from '../components/header/header';
+import { Fragment } from 'react/cjs/react.production.min';
 import Footer from '../components/footer/footer';
-import './user.css';
-import { AnimatePresence } from 'framer-motion';
+import Header from '../components/header/header';
 import Home from '../components/home/home';
+import './user.css';
 const Category = React.lazy(() => import('../components/search/category'));
 const Search = React.lazy(() => import('../components/search/search'));
 const Tag = React.lazy(() => import('../components/search/tag'));

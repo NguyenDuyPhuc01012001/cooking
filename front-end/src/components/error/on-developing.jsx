@@ -1,15 +1,6 @@
-import React from 'react';
-import { Fragment } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { Fragment } from 'react';
 import styles from './on-developing.module.scss';
 function OnDeveloping() {
-	const history = useHistory();
-
-	// onClick={handleClick}
-	// const handleClick = () => {
-	//     history.replace("/user");
-	//     window.location.reload();
-	// }
 	return (
 		<Fragment>
 			<div className={styles.container}>

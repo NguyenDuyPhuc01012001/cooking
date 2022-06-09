@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Fragment } from 'react/cjs/react.production.min';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Intro from './intro';
 import Type from './type';
 import Popular from './popular';

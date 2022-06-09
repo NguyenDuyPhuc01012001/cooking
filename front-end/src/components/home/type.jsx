@@ -1,9 +1,9 @@
-import React, { Component, useEffect, useState } from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import axios from 'axios';
 import '@splidejs/splide/dist/css/splide.min.css';
+import axios from 'axios';
+import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../../assets/css/hot_and_types.css';
 import './home.css';
 

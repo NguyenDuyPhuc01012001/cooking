@@ -1,16 +1,14 @@
-import React, { Component, useEffect, useState } from 'react';
-import { Fragment } from 'react/cjs/react.production.min';
-import './password.css';
-import eyeOn from '../../assets/sign_up/eye_on.png';
-import { useHistory } from 'react-router-dom';
-import eyeOff from '../../assets/sign_up/eye_off.png';
-import { toast, ToastPosition } from 'react-toastify';
 import axios from 'axios';
-import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Fragment } from 'react/cjs/react.production.min';
+import eyeOff from '../../assets/sign_up/eye_off.png';
+import eyeOn from '../../assets/sign_up/eye_on.png';
 import { checkValidPassword } from '../sign//valid-password';
-
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './password.css';
 
 toast.configure();
 const Password = () => {
@@ -73,7 +71,7 @@ const Password = () => {
 			})
 			.catch((err) => {
 				const code = err.message.substring(32, err.message.length);
-				if (code == '409') {
+				if (code === '409') {
 					toast.error(
 						'Không trùng khớp mật khẩu hiện tại. Vui lòng kiểm tra lại',
 						{
@@ -173,7 +171,7 @@ const Password = () => {
 							className="change-password-btn"
 							onClick={() => setIsShowCurrentPassword((prev) => !prev)}
 						>
-							<img src={isShowCurrentPassword ? eyeOn : eyeOff} />
+							<img src={isShowCurrentPassword ? eyeOn : eyeOff} alt="eye" />
 						</button>
 					</div>
 					<div></div>
@@ -201,7 +199,7 @@ const Password = () => {
 							className="change-password-btn"
 							onClick={() => setIsShowNewPassword((prev) => !prev)}
 						>
-							<img src={isShowNewPassword ? eyeOn : eyeOff} />
+							<img src={isShowNewPassword ? eyeOn : eyeOff} alt="eye" />
 						</button>
 					</div>
 					<div></div>
@@ -229,7 +227,7 @@ const Password = () => {
 							className="change-password-btn"
 							onClick={() => setIsShowReNewPassword((prev) => !prev)}
 						>
-							<img src={isShowReNewPassword ? eyeOn : eyeOff} />
+							<img src={isShowReNewPassword ? eyeOn : eyeOff} alt="eye" />
 						</button>
 					</div>
 					<div></div>

@@ -1,5 +1,4 @@
-import React, { memo } from 'react';
-import { useFormContext } from 'react-hook-form';
+import React from 'react';
 const Instruction = ({ instructionList, setInstructionList }) => {
 	const maxInstruction = 50;
 	const handleInstructionChange = (e, index) => {

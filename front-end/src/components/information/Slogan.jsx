@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Fragment } from 'react/cjs/react.production.min';
-import './Slogan.css';
 import Left from '../../assets/introduction_page/left.png';
 import Mid from '../../assets/introduction_page/mid.png';
 import Right from '../../assets/introduction_page/right.png';
+import './Slogan.css';
 
 class Information extends Component {
 	render() {
@@ -12,7 +12,7 @@ class Information extends Component {
 				<div className="slogan_wrapper">
 					<div className="slogan_frame">
 						<div className="slogan_picture_left">
-							<img src={Left}></img>
+							<img src={Left} alt="left"></img>
 						</div>
 						<div className="slogan_frame_title">Tầm nhìn</div>
 						<div className="slogan_frame_content">
@@ -22,7 +22,7 @@ class Information extends Component {
 
 					<div className="slogan_frame">
 						<div className="slogan_picture_mid">
-							<img src={Mid}></img>
+							<img src={Mid} alt="mid"></img>
 						</div>
 						<div className="slogan_frame_title">Mục tiêu</div>
 						<div className="slogan_frame_content">
@@ -32,7 +32,7 @@ class Information extends Component {
 
 					<div className="slogan_frame">
 						<div className="slogan_picture_right">
-							<img src={Right}></img>
+							<img src={Right} alt="right"></img>
 						</div>
 						<div className="slogan_frame_title">Giá trị cốt lõi</div>
 						<div className="slogan_frame_content">

@@ -1,5 +1,4 @@
-import React, { useState, memo } from 'react';
-import arrowDown from '../../assets/image/arrow-down.svg';
+import React from 'react';
 
 const Ingredient = ({ ingredientList, setIngredientList }) => {
 	// const [{ ingredient }] = ingredientList;

@@ -1,11 +1,10 @@
-import React, { Component, useEffect, useState } from 'react';
-import { Fragment } from 'react/cjs/react.production.min';
-import './change-email.css';
-import exit from '../../assets/forgot_password/exit.png';
-import { checkValidEmail } from './valid-email';
 import axios from 'axios';
+import React, { useState } from 'react';
+import { Fragment } from 'react/cjs/react.production.min';
+import exit from '../../assets/forgot_password/exit.png';
+import './change-email.css';
 import { showErrMsg } from './notification/notification';
-import Cookies from 'js-cookie';
+import { checkValidEmail } from './valid-email';
 function ChangeEmail({ handleClose, setHeaderEmail, headerEmail }) {
 	const [email, setEmail] = useState('');
 	const [isValidEmail, setIsValidEmail] = useState(true);
@@ -34,7 +33,7 @@ function ChangeEmail({ handleClose, setHeaderEmail, headerEmail }) {
 			})
 			.catch((err) => {
 				const code = err.message.substring(32, err.message.length);
-				if (code == '401') {
+				if (code === '401') {
 					setEmail('');
 					setError('Email này đã được dùng cho một tài khoản khác');
 				} else {

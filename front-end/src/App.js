@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import './App.css';
 import { createBrowserHistory } from 'history';
+import React, { Component } from 'react';
 import {
 	BrowserRouter as Router,
-	Switch,
-	Route,
 	Redirect,
+	Route,
+	Switch,
 } from 'react-router-dom';
-import OnDeveloping from './components/error/on-developing';
+import './App.css';
 import NotFound from './components/error/not-found';
-import Home from './components/home/home';
+import OnDeveloping from './components/error/on-developing';
 const User = React.lazy(() => import('./pages/user.jsx'));
 const Admin = React.lazy(() => import('./pages/admin.jsx'));
 const ActivationEmail = React.lazy(() =>

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Link, useLocation, useParams, useHistory } from 'react-router-dom';
-import { Fragment } from 'react/cjs/react.production.min';
-import './category.css';
 import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
-import Type from '../home/type';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Fragment } from 'react/cjs/react.production.min';
 import { LoadAllRecipe } from '../../redux/action';
+import './category.css';
 
 function All() {
 	const findAllLink = '/user/all/recipe';

@@ -17,8 +17,8 @@ const sendVerificationEmail = async (verifyEmailToken, email) => {
         subject: 'Xác thực email',
         html: `
         <div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
-            <h2 style="text-align: center; text-transform: uppercase;color: teal;">____ website</h2>
-            <p>______ xin chào bạn! <br>
+            <h2 style="text-align: center; text-transform: uppercase;color: teal;">Tasty website</h2>
+            <p>Tasty xin chào bạn! <br>
             Chỉ một bước duy nhất nữa thôi, bạn sẽ chính thức trở thành một trong những admin của trang web chúng tôi.<br>
             Một đường dẫn xác thực đã được tạo và có hiệu lực trong vòng <span style="color: crimson"> <b>24 giờ</b></span>!<br>
             Vui lòng chọn vào nút xác thực để hoàn tất thủ tục.
@@ -64,8 +64,8 @@ const sendResetPasswordEmail = async (resetPasswordToken, email) => {
         subject: 'Thay đổi mật khẩu',
         html: `
         <div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
-        <h2 style="text-align: center; text-transform: uppercase;color: teal;">______ website</h2>
-        <p>______ xin chào bạn!<br>
+        <h2 style="text-align: center; text-transform: uppercase;color: teal;">Tasty website</h2>
+        <p>Tasty xin chào bạn!<br>
         Một đường dẫn liên kết đến trang thay đổi mật khẩu đã được tạo và có hiệu lực trong vòng <span style="color: crimson"> <b>5 phút</b></span>!<br>
         Vui lòng nhấn nút dưới đây để tiến hành việc đổi mật khẩu.
         </p>

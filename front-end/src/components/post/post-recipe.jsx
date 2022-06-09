@@ -1,22 +1,21 @@
-import './post-recipe.css';
-import React, { useEffect, useState } from 'react';
+import { css } from '@emotion/react';
+import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
-import Instruction from './instruction';
-import Ingredient from './ingredient';
-import Image from './image';
+import Cookies from 'js-cookie';
+import React, { useEffect, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import * as yup from 'yup';
 import BasicInfo from './basic_info';
 import Des_info from './des_info';
+import Image from './image';
+import Ingredient from './ingredient';
+import Instruction from './instruction';
+import './post-recipe.css';
 import Tag from './tag';
-import Cookies from 'js-cookie';
-import ClipLoader from 'react-spinners/ClipLoader';
-import { FormProvider, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { ToastContainer, toast } from 'react-toastify';
-import { useHistory } from 'react-router-dom';
-import { css } from '@emotion/react';
-import * as yup from 'yup';
-import 'react-toastify/dist/ReactToastify.css';
-import { FaPhoneVolume } from 'react-icons/fa';
 
 const schema = yup.object().shape({
 	title: yup
@@ -251,7 +250,7 @@ const PostRecipe = () => {
 						/>
 
 						<Tag tagList={tagList} setTagList={setTagList} />
-						{files.length != 0 && (
+						{files.length !== 0 && (
 							<button type="submit" className="btnPost">
 								Đăng tin
 							</button>

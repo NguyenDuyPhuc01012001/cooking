@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Fragment } from 'react/cjs/react.production.min';
-import 'react-toastify/dist/ReactToastify.css';
-import Cookies from 'js-cookie';
-import { FormProvider, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import ClipLoader from 'react-spinners/ClipLoader';
-import { ToastContainer, toast } from 'react-toastify';
-import { useHistory } from 'react-router-dom';
 import { css } from '@emotion/react';
-import moment from 'moment';
-import './basic-info.css';
-import '../../post/post-recipe.css';
+import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import React, { useEffect, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Fragment } from 'react/cjs/react.production.min';
 import * as yup from 'yup';
-
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import '../../post/post-recipe.css';
 import BasicInfo from './basic-info';
+import './basic-info.css';
 
 const schema = yup.object().shape({
 	fullName: yup
@@ -43,8 +39,6 @@ function Profile() {
 		criteriaMode: 'all',
 	});
 
-	const { formState, setFocus, setError } = methods;
-
 	const apiImage = 'https://api.cloudinary.com/v1_1/nam-duong/upload';
 
 	const [basicInfo, setBasicInfo] = useState({
@@ -56,7 +50,6 @@ function Profile() {
 
 	const [files, setFiles] = useState(null);
 	const [isSubmitting, setSubmitting] = useState(false);
-	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		const Token = Cookies.get('token');

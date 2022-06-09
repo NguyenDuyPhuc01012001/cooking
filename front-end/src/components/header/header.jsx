@@ -1,30 +1,23 @@
-import React, { Component, useState, useEffect } from 'react';
-import { Fragment } from 'react/cjs/react.production.min';
-import './header.css';
-import { Link, NavLink } from 'react-router-dom';
-import logo from '../../assets/user_page/logo.svg';
-import global from '../../assets/user_page/global.png';
-import Popup from 'reactjs-popup';
-//#region Popup
-import SignIn from '../sign/sign-in';
-import ForgotPassword from '../sign/forgot-password';
-import SignUp from '../sign/sign-up';
-import ConfirmEmail from '../sign/confirm-email';
-import UpdateInformation from '../sign/change-email';
-//#endregion
-import Dropdown from '../main-admin/dropdown/Dropdown';
-import user_image from '../../assets/avatar.jpg';
-import ic_logout from '../../assets/ic_logout.png';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import moment from 'moment';
 import 'moment/locale/vi';
-import { useDispatch, useSelector } from 'react-redux';
-
-var posX = window.innerWidth;
-window.onresize = () => {
-	posX = window.innerWidth;
-};
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Fragment } from 'react/cjs/react.production.min';
+import Popup from 'reactjs-popup';
+import user_image from '../../assets/avatar.jpg';
+import ic_logout from '../../assets/ic_logout.png';
+import global from '../../assets/user_page/global.png';
+import logo from '../../assets/user_page/logo.svg';
+//#endregion
+import Dropdown from '../main-admin/dropdown/Dropdown';
+import UpdateInformation from '../sign/change-email';
+import ConfirmEmail from '../sign/confirm-email';
+import ForgotPassword from '../sign/forgot-password';
+//#region Popup
+import SignIn from '../sign/sign-in';
+import './header.css';
 
 const newsLink = '/user/news';
 const informationLink = '/user/information';
@@ -36,19 +29,15 @@ let navbarItems = [
 		link: newsLink,
 		dropDownItems: [
 			{
-				displayName: 'BĐS & Covid-19',
+				displayName: 'Covid-19',
 				link: '/upcoming',
 			},
 			{
-				displayName: 'Thị trường',
+				displayName: 'Mẹo vặt',
 				link: '/upcoming',
 			},
 			{
-				displayName: 'Thông tin quy hoạch',
-				link: '/upcoming',
-			},
-			{
-				displayName: 'Bất động sản thế giới',
+				displayName: 'Cách chọn nguyên liệu',
 				link: '/upcoming',
 			},
 		],

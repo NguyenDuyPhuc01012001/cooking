@@ -1,16 +1,15 @@
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 import React from 'react';
-import ActivityCard from './ActivityCard';
+import OwlCarousel from 'react-owl-carousel';
+import { Fragment } from 'react/cjs/react.production.min';
+import next from '../../assets/image/ReCarouselOwl/next.png';
+import prev from '../../assets/image/ReCarouselOwl/prev.png';
 import activity1 from '../../assets/introduction_page/activity1.png';
 import activity2 from '../../assets/introduction_page/activity2.png';
 import activity3 from '../../assets/introduction_page/activity3.png';
-import prev from '../../assets/image/ReCarouselOwl/prev.png';
-import next from '../../assets/image/ReCarouselOwl/next.png';
-import { Fragment } from 'react/cjs/react.production.min';
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
+import ActivityCard from './ActivityCard';
 import './ActivityCarousel.css';
-import { Link } from 'react-router-dom';
 const prevIcon = `<img src=${prev} />`;
 const nextIcon = `<img src=${next} />`;
 

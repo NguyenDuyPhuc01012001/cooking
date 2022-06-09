@@ -1,8 +1,6 @@
 import React from 'react';
-import './ActivityCard.css';
 import { Fragment } from 'react/cjs/react.production.min';
-import activity1 from '../../assets/introduction_page/activity1.png';
-import { Link } from 'react-router-dom';
+import './ActivityCard.css';
 export default function ActivityCard(props) {
 	return (
 		<Fragment>

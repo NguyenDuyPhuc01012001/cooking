@@ -1,9 +1,7 @@
-import ReactToPrint from 'react-to-print';
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Link, useParams, useHistory } from 'react-router-dom';
-import { Fragment } from 'react/cjs/react.production.min';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import ReactToPrint from 'react-to-print';
 import './recipe.css';
 
 function Recipe() {
@@ -73,7 +71,7 @@ function Recipe() {
 		})
 			.then((res) => {
 				const data = res.data;
-				if (data[0].pictures.length != 0) setPictureURL(data[0].pictures[0]);
+				if (data[0].pictures.length !== 0) setPictureURL(data[0].pictures[0]);
 
 				setDetails(data[0]);
 			})
@@ -128,9 +126,9 @@ function Recipe() {
 							<div className="more_func">
 								<p class="recipe-tags">
 									Thẻ :
-									{details == undefined ||
-									details == null ||
-									details.length == 0 ? (
+									{details === undefined ||
+									details === null ||
+									details.length === 0 ? (
 										<div></div>
 									) : (
 										details.tags.map((item, index) => (
@@ -159,9 +157,9 @@ function Recipe() {
 							<div>
 								<h4>Nguyên liệu</h4>
 								<div>
-									{details == undefined ||
-									details == null ||
-									details.length == 0 ? (
+									{details === undefined ||
+									details === null ||
+									details.length === 0 ? (
 										<div></div>
 									) : (
 										details.ingredients.map((item, index) => (
@@ -185,9 +183,9 @@ function Recipe() {
 							{/* <!-- single instruction --> */}
 							<div class="single-instruction">
 								<div>
-									{details == undefined ||
-									details == null ||
-									details.length == 0 ? (
+									{details === undefined ||
+									details === null ||
+									details.length === 0 ? (
 										<div></div>
 									) : (
 										details.instructions.map((item, index) => (

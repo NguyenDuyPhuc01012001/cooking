@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { Fragment } from 'react/cjs/react.production.min';
-import eyeOn from '../../assets/sign_in/eye_on.png';
-import eyeOff from '../../assets/sign_in/eye_off.png';
-import exit from '../../assets/sign_in/exit.png';
-import { checkValidEmail } from './valid-email';
-import { checkValidPassword } from './valid-password';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import React, { useEffect, useState } from 'react';
+import { Fragment } from 'react/cjs/react.production.min';
+import exit from '../../assets/sign_in/exit.png';
+import eyeOff from '../../assets/sign_in/eye_off.png';
+import eyeOn from '../../assets/sign_in/eye_on.png';
 import { showErrMsg } from './notification/notification';
 import './sign-in.css';
+import { checkValidEmail } from './valid-email';
+import { checkValidPassword } from './valid-password';
+import usernameImage from '../../assets/sign_in/user.png';
+import passwordImage from '../../assets/sign_in/lock.png';
 const SignIn = ({
 	setIsShowSignIn,
 	setIsLogin,
@@ -117,6 +118,9 @@ const SignIn = ({
 				{error && showErrMsg(error)}
 				<div>
 					<div className={validEmail ? 'input-box' : 'wrong-input-format'}>
+						<div className="icon">
+							<img src={usernameImage} alt="username" />
+						</div>
 						<input
 							className="username-input"
 							value={email}
@@ -131,6 +135,10 @@ const SignIn = ({
 					<div
 						className={checkEmptyPassword ? 'input-box' : 'wrong-input-format'}
 					>
+						<div className="icon">
+							<img src={passwordImage} alt="password" />
+						</div>
+
 						<input
 							className="password-input"
 							value={password}

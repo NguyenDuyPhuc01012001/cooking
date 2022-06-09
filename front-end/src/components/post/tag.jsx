@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React from 'react';
 
 const Tag = ({ tagList, setTagList }) => {
 	// const [{ tag }] = tagList;

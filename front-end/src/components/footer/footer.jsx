@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Fragment } from 'react/cjs/react.production.min';
-import './footer.css';
-import logo from '../../assets/user_page/logo.svg';
 import certification from '../../assets/user_page/certification.png';
+import facebook from '../../assets/user_page/facebook.png';
+import instagram from '../../assets/user_page/instagram.png';
 import location from '../../assets/user_page/location.png';
 import phone from '../../assets/user_page/phone.png';
 import twitter from '../../assets/user_page/twitter.png';
-import facebook from '../../assets/user_page/facebook.png';
-import instagram from '../../assets/user_page/instagram.png';
-import send from '../../assets/user_page/send.png';
-import { Link } from 'react-router-dom';
+import './footer.css';
 
 const connects = [
 	{
@@ -88,14 +86,18 @@ class Footer extends Component {
 								<ul className="footer-column-first">
 									<p className="footer-title">CÔNG TY CỔ PHẦN UIT VIỆT NAM</p>
 									<li className="footer-item">
-										<img src={location} className="footer-icon" />
+										<img
+											src={location}
+											className="footer-icon"
+											alt="location"
+										/>
 										<span>
 											Đường Hàn Thuyên Khu phố 6, Thành phố <br /> Thủ Đức,
 											Thành phố Hồ Chí Minh
 										</span>
 									</li>
 									<li className="footer-item">
-										<img src={phone} className="footer-icon" />
+										<img src={phone} className="footer-icon" alt="phone" />
 										<span>Holine: 0909 009 090</span>
 									</li>
 									<li>

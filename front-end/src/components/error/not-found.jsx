@@ -1,12 +1,6 @@
-import React, { useEffect } from 'react';
-import { Fragment } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { Fragment } from 'react';
 import styles from './not-found.module.scss';
 function NotFound() {
-	const history = useHistory();
-	// const handleClick = () => {
-	//     history.push("/");
-	// }
 	return (
 		<Fragment>
 			<div className={styles.container}>

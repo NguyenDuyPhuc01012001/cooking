@@ -1,12 +1,12 @@
 var exception = ['@', '.'];
 
 function isAlphabet(character) {
-    if (character >= 'a' && character <= 'z' || exception.includes(character))
+    if ((character >= 'a' && character <= 'z') || exception.includes(character))
         return true;
     return false;
 }
 function isNumber(character) {
-    if (character >= '0' && character <= '9' || exception.includes(character))
+    if ((character >= '0' && character <= '9') || exception.includes(character))
         return true;
     return false;
 }
@@ -18,31 +18,31 @@ function checkAlphabetAndNumber(email) {
     return true;
 }
 function checkAddSymbol(email) {
-    if (email[0] == '@')
+    if (email[0] === '@')
         return false;
-    if (email[email.length - 1] == '@')
+    if (email[email.length - 1] === '@')
         return false;
     let countAdd = 0;
     for (let i = 0; i < email.length; i++) {
-        if (email[i] == '@')
+        if (email[i] === '@')
             countAdd++;
     }
-    return countAdd == 1;
+    return countAdd === 1;
 }
 function checkOther(email) {
     if (!checkAddSymbol(email))
         return false;
     for (let i = 0; i < email.length; i++) {
-        if (email[i] == '@') {
-            if (email[i + 1] == '.') {
+        if (email[i] === '@') {
+            if (email[i + 1] === '.') {
                 return false;
             }
         }
 
-        if (email[i] == '.') {
-            if (i == email.length - 1)
+        if (email[i] === '.') {
+            if (i === email.length - 1)
                 continue;
-            if (email[i + 1] == '.' || email[i + 1] == '@')
+            if (email[i + 1] === '.' || email[i + 1] === '@')
                 return false;
         }
     }
@@ -82,7 +82,7 @@ function checkEmailLength(email) {
     return email.length <= 254;
 }
 export function checkValidEmail(email) {
-    if(!email)
+    if (!email)
         return false;
     return checkAlphabetAndNumber(email)
         && checkAddSymbol(email)

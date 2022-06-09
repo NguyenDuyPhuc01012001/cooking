@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Fragment } from 'react/cjs/react.production.min';
-import './posts.css';
 import axios from 'axios';
+import $ from 'jquery';
 import Cookies from 'js-cookie';
+import React, { useEffect, useState } from 'react';
+import Modal from 'react-modal';
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom';
-import $ from 'jquery';
-import Modal from 'react-modal';
+import { Fragment } from 'react/cjs/react.production.min';
+import './posts.css';
 
 const initialDateFilter = {
 	dateStart: '',
@@ -143,7 +143,7 @@ function Categories() {
 								<tr
 									style={{
 										height: '40px',
-										backgroundColor: index % 2 == 0 ? '#F9F9F9' : '#FFFFFF',
+										backgroundColor: index % 2 === 0 ? '#F9F9F9' : '#FFFFFF',
 									}}
 								>
 									<td style={{ textAlign: 'center' }}>

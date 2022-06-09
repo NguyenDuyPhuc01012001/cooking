@@ -1,22 +1,17 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Backdrop, CircularProgress } from '@material-ui/core';
+import axios from 'axios';
+import React, { useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Fragment } from 'react/cjs/react.production.min';
 import exit from '../../assets/sign_up/exit.png';
-import eyeOn from '../../assets/sign_up/eye_on.png';
 import eyeOff from '../../assets/sign_up/eye_off.png';
-import Cookies from 'js-cookie';
-import { checkValidEmail } from './valid-email';
-import { checkValidPassword } from './valid-password';
-import { checkValidName } from './valid-name';
-import SignIn from './sign-in';
-import ConfirmEmail from './confirm-email';
-import './sign-up.css';
-import Select from 'react-select';
-import axios from 'axios';
+import eyeOn from '../../assets/sign_up/eye_on.png';
 import { showErrMsg } from './notification/notification';
-import { Backdrop, CircularProgress } from '@material-ui/core';
+import './sign-up.css';
+import { checkValidEmail } from './valid-email';
+import { checkValidName } from './valid-name';
+import { checkValidPassword } from './valid-password';
 
-import Popup from 'reactjs-popup';
 const SignUp = ({ setIsSignUpOpen, handleConfirm, setEmailHeader }) => {
 	const customStyle = {
 		dropdownIndicator: (base) => ({
@@ -91,7 +86,7 @@ const SignUp = ({ setIsSignUpOpen, handleConfirm, setEmailHeader }) => {
 	}
 	function getRePasswordError(password, rePassword) {
 		let errorMessage = '';
-		if (rePassword == password && rePassword && password) {
+		if (rePassword === password && rePassword && password) {
 			setIsValidRePassword(true);
 			return;
 		} else {

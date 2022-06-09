@@ -1,16 +1,15 @@
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 import React from 'react';
-import SpecialCard from './SpecialCard';
+import OwlCarousel from 'react-owl-carousel';
+import { Fragment } from 'react/cjs/react.production.min';
+import next from '../../assets/image/ReCarouselOwl/next.png';
+import prev from '../../assets/image/ReCarouselOwl/prev.png';
 import special1 from '../../assets/introduction_page/special1.png';
 import special2 from '../../assets/introduction_page/special2.png';
 import special3 from '../../assets/introduction_page/special3.png';
-import prev from '../../assets/image/ReCarouselOwl/prev.png';
-import next from '../../assets/image/ReCarouselOwl/next.png';
-import { Fragment } from 'react/cjs/react.production.min';
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
+import SpecialCard from './SpecialCard';
 import './SpecialNewsCarousel.css';
-import { Link } from 'react-router-dom';
 const prevIcon = `<img src=${prev} />`;
 const nextIcon = `<img src=${next} />`;
 

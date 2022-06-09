@@ -1,22 +1,18 @@
-import React, { Component, useState, useEffect } from 'react';
-import { Fragment } from 'react/cjs/react.production.min';
+import Cookies from 'js-cookie';
+import React, { useEffect, useState } from 'react';
 import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Redirect,
+	Redirect, Route, Switch
 } from 'react-router-dom';
-import LeftMenu from '../components/left-menu';
+import { Fragment } from 'react/cjs/react.production.min';
+import '../assets/css/admin.css';
 import Footer from '../components/footer/footer-main';
 import Heading from '../components/header/heading';
+import LeftMenu from '../components/left-menu';
 import {
-	userService,
 	adminService,
-	sectionContent,
+	sectionContent
 } from '../components/left-menu-content';
-import Cookies from 'js-cookie';
 
-import '../assets/css/admin.css';
 
 const User = React.lazy(() => import('./user.jsx'));
 

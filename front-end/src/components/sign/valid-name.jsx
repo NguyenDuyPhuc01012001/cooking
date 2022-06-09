@@ -32,7 +32,7 @@ export function checkValidName(name) {
     }
 
     for (const character of name) {
-        if (character == " ")
+        if (character === " ")
             continue;
         if (!isCapitalCharacter(character) && !isNormalCharacter(character) && !isUnicodeCharacter(character)) {
             return false;

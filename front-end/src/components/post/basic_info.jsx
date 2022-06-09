@@ -1,8 +1,7 @@
-import React, { useState, Fragment, useEffect } from 'react';
-import { useForm, useFormContext } from 'react-hook-form';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 import arrowDown from '../../assets/image/arrow-down.svg';
-
 import './basic_info.css';
 import './post-recipe.css';
 

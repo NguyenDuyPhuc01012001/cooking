@@ -1,9 +1,8 @@
-import React, { useEffect, useCallback } from 'react';
-import image from '../../assets/image/image.svg';
-import axios from 'axios';
+import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { useForm, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { FaTimes } from 'react-icons/fa';
+import image from '../../assets/image/image.svg';
 
 const Image = ({ files, setFiles, fileLength }) => {
 	const {

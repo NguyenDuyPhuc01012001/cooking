@@ -1,10 +1,10 @@
-import React, { Component, useState } from 'react';
-import { Fragment } from 'react/cjs/react.production.min';
-import './forgot-password.css';
-import exit from '../../assets/forgot_password/exit.png';
-import { checkValidEmail } from './valid-email';
 import axios from 'axios';
+import React, { useState } from 'react';
+import { Fragment } from 'react/cjs/react.production.min';
+import exit from '../../assets/forgot_password/exit.png';
+import './forgot-password.css';
 import { showErrMsg } from './notification/notification';
+import { checkValidEmail } from './valid-email';
 function ForgotPassword({ handleOpenSignIn, handleClose }) {
 	const [email, setEmail] = useState('');
 	const [isValidEmail, setIsValidEmail] = useState(true);
@@ -25,7 +25,7 @@ function ForgotPassword({ handleOpenSignIn, handleClose }) {
 				})
 				.catch((err) => {
 					const code = err.message.substring(32, err.message.length);
-					if (code == '400') {
+					if (code === '400') {
 						setEmail('');
 						setError('Email này chưa được đăng ký');
 					} else {

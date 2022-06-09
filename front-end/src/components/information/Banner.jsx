@@ -1,15 +1,15 @@
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 import React from 'react';
-import './Banner.css';
+import OwlCarousel from 'react-owl-carousel';
 import { Fragment } from 'react/cjs/react.production.min';
 import prev from '../../assets/introduction_page/arrow-left.png';
 import next from '../../assets/introduction_page/arrow-right.png';
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
 import banner1 from '../../assets/introduction_page/banner1.jpg';
 import banner2 from '../../assets/introduction_page/banner2.jpg';
 import banner3 from '../../assets/introduction_page/banner3.jpg';
 import downBtn from '../../assets/introduction_page/downBtn.png';
+import './Banner.css';
 import FormRegister from './FormRegister';
 
 const prevIcon = `<img src=${prev} />`;
@@ -24,7 +24,7 @@ export default function Banner() {
 						<span>Tìm kiếm công thức nấu ăn</span>
 					</div>
 					<div className="banner-btn-down">
-						<img src={downBtn} />
+						<img src={downBtn} alt="Down" />
 					</div>
 					<div className="banner-form-regis">
 						<FormRegister />
@@ -42,13 +42,13 @@ export default function Banner() {
 						onClick={() => {}}
 					>
 						<div className="banner-content">
-							<img src={banner1} />
+							<img src={banner1} alt="Banner" />
 						</div>
 						<div className="banner-content">
-							<img src={banner2} />
+							<img src={banner2} alt="Banner" />
 						</div>
 						<div className="banner-content">
-							<img src={banner3} />
+							<img src={banner3} alt="Banner" />
 						</div>
 					</OwlCarousel>
 				</div>

@@ -1,29 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { Fragment } from 'react/cjs/react.production.min';
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Link,
-	Redirect,
-	useParams,
-	useHistory,
-} from 'react-router-dom';
-import '../../home/main/main.css';
-import axios from 'axios';
-import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import React, { useState } from 'react';
+import OwlCarousel from 'react-owl-carousel';
+import { useHistory } from 'react-router-dom';
+import { Fragment } from 'react/cjs/react.production.min';
 import banner1 from '../../assets/introduction_page/banner1.jpg';
 import banner2 from '../../assets/introduction_page/banner2.jpg';
 import banner3 from '../../assets/introduction_page/banner3.jpg';
+import '../../home/main/main.css';
 const Intro = () => {
-	//SEARCH HERE
+	// SEARCH HERE
 	const [searchWords, setSearchWords] = useState('');
 	const history = useHistory();
 	const submitHandler = (e) => {
 		e.preventDefault();
-		if (searchWords.length == 0) searchWords = ' ';
+		if (searchWords.length === 0) searchWords = ' ';
 		history.push('/user/searched/' + searchWords + '?page=0');
 	};
 	const Introform = (
@@ -64,13 +55,13 @@ const Intro = () => {
 						onClick={() => {}}
 					>
 						<div className="banner-content">
-							<img src={banner1} />
+							<img src={banner1} alt="Banner" />
 						</div>
 						<div className="banner-content">
-							<img src={banner2} />
+							<img src={banner2} alt="Banner" />
 						</div>
 						<div className="banner-content">
-							<img src={banner3} />
+							<img src={banner3} alt="Banner" />
 						</div>
 					</OwlCarousel>
 				</div>

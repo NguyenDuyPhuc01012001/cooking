@@ -1,12 +1,11 @@
-import React, { Component, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Fragment } from 'react/cjs/react.production.min';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Dropdown from '../main-admin/dropdown/Dropdown';
-import user_image from '../../assets/avatar.jpg';
-import ic_logout from '../../assets/ic_logout.png';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import React, { Component, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Fragment } from 'react/cjs/react.production.min';
+import user_image from '../../assets/avatar.jpg';
+import ic_logout from '../../assets/ic_logout.png';
+import Dropdown from '../main-admin/dropdown/Dropdown';
 import './heading.css';
 const curr_user = {
 	display_name: 'Tai Nguyen',

@@ -1,22 +1,19 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { Fragment } from 'react/cjs/react.production.min';
-import exit from '../../assets/sign_up/exit.png';
-import eyeOn from '../../assets/sign_up/eye_on.png';
-import eyeOff from '../../assets/sign_up/eye_off.png';
-import Cookies from 'js-cookie';
-import { checkValidEmail } from '../sign/valid-email';
-import { checkValidPassword } from '../sign/valid-password';
-import { checkValidName } from '../sign/valid-name';
-import ConfirmEmail from '../sign/confirm-email';
-import UpdateInformation from '../sign/change-email';
-import './createAcc.css';
-import Select from 'react-select';
-import axios from 'axios';
-import { showErrMsg } from '../sign/notification/notification';
 import { Backdrop, CircularProgress } from '@material-ui/core';
-
+import axios from 'axios';
+import React, { useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Fragment } from 'react/cjs/react.production.min';
 import Popup from 'reactjs-popup';
+import eyeOff from '../../assets/sign_up/eye_off.png';
+import eyeOn from '../../assets/sign_up/eye_on.png';
+import UpdateInformation from '../sign/change-email';
+import ConfirmEmail from '../sign/confirm-email';
+import { showErrMsg } from '../sign/notification/notification';
+import { checkValidEmail } from '../sign/valid-email';
+import { checkValidName } from '../sign/valid-name';
+import { checkValidPassword } from '../sign/valid-password';
+import './createAcc.css';
+
 const CreateAccount = () => {
 	const customStyle = {
 		dropdownIndicator: (base) => ({
@@ -93,7 +90,7 @@ const CreateAccount = () => {
 	}
 	function getRePasswordError(password, rePassword) {
 		let errorMessage = '';
-		if (rePassword == password && rePassword && password) {
+		if (rePassword === password && rePassword && password) {
 			setIsValidRePassword(true);
 			return;
 		} else {
@@ -154,7 +151,7 @@ const CreateAccount = () => {
 			checkValidName(name) &&
 			isAgree &&
 			rePassword &&
-			password == rePassword &&
+			password === rePassword &&
 			gender
 		) {
 			setIsLoading(true);
@@ -202,7 +199,7 @@ const CreateAccount = () => {
 			.catch((err) => {
 				setIsLoading(false);
 				const code = err.message.substring(32, err.message.length);
-				if (code == '401') {
+				if (code === '401') {
 					setEmail('');
 					setError('Email này đã được đăng ký trước đó');
 				} else {
@@ -290,7 +287,7 @@ const CreateAccount = () => {
 								Mật khẩu <span className="require">*</span>
 							</div>
 							<button onClick={changePassVisibility} className="m-right-20">
-								<img src={passVisibility} />
+								<img src={passVisibility} alt="" />
 							</button>
 						</div>
 
@@ -335,7 +332,7 @@ const CreateAccount = () => {
 								Nhập lại mật khẩu <span className="require">*</span>
 							</div>
 							<button onClick={changeRePassVisibility} className="m-right-20">
-								<img src={rePassVisibility} />
+								<img src={rePassVisibility} alt="" />
 							</button>
 						</div>
 						{!isValidRePassword && (
@@ -352,7 +349,7 @@ const CreateAccount = () => {
 									<span className="label">Nam</span>
 									<input
 										value={'Nam'}
-										checked={gender == 'Nam'}
+										checked={gender === 'Nam'}
 										onChange={(e) => setGender(e.target.value)}
 										type="radio"
 										name="gender"
@@ -364,7 +361,7 @@ const CreateAccount = () => {
 									<span className="label">Nữ</span>
 									<input
 										value={'Nữ'}
-										checked={gender == 'Nữ'}
+										checked={gender === 'Nữ'}
 										onChange={(e) => setGender(e.target.value)}
 										type="radio"
 										name="gender"

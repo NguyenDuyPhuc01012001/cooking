@@ -1,17 +1,14 @@
-import React, { Component, useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Fragment } from 'react/cjs/react.production.min';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
-import { render } from 'react-dom';
-
-import logo from '../assets/user_page/logo.svg';
-import home from '../assets/admin_LeftMenu/home.png';
-import b_home from '../assets/admin_LeftMenu/b_home.png';
-import log_out from '../assets/admin_LeftMenu/log_out.png';
-import b_log_out from '../assets/admin_LeftMenu/b_log_out.png';
-import './left-menu.css';
 import Cookies from 'js-cookie';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { Fragment } from 'react/cjs/react.production.min';
+import b_home from '../assets/admin_LeftMenu/b_home.png';
+import b_log_out from '../assets/admin_LeftMenu/b_log_out.png';
+import home from '../assets/admin_LeftMenu/home.png';
+import log_out from '../assets/admin_LeftMenu/log_out.png';
+import logo from '../assets/user_page/logo.svg';
+import './left-menu.css';
+
 var name;
 
 class MenuBtn extends React.Component {
@@ -80,7 +77,7 @@ class MenuBtn extends React.Component {
 				<div className="menu--btn chosen">
 					<div className="content flex_left">
 						<div className="icon">
-							<img src={this.props.focus} />
+							<img src={this.props.focus} alt="" />
 						</div>
 						<span className="">{this.props.name}</span>
 					</div>
@@ -98,7 +95,7 @@ class MenuBtn extends React.Component {
 				>
 					<div className="content flex_left">
 						<div className="icon">
-							<img src={this.state.img} />
+							<img src={this.state.img} alt="" />
 						</div>
 						<p className="left-menu-subtitle">{this.props.name}</p>
 					</div>
@@ -177,7 +174,7 @@ const LeftMenu = ({ section }) => {
 						<a href="/user" className="leftmenu-home-link">
 							<div className="left-menu-home">
 								<div className="leftmenu-home-icon">
-									<img src={icon}></img>
+									<img src={icon} alt="icon"></img>
 								</div>
 								<span>Trang chủ</span>
 							</div>
@@ -208,7 +205,7 @@ const LeftMenu = ({ section }) => {
 						>
 							<div className="left-menu-home">
 								<div className="leftmenu-home-icon">
-									<img src={iconOut}></img>
+									<img src={iconOut} alt=""></img>
 								</div>
 								<span>Đăng xuất</span>
 							</div>
