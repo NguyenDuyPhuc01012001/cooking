@@ -7,7 +7,7 @@ import { Fragment } from 'react/cjs/react.production.min';
 import banner1 from '../../assets/introduction_page/banner1.jpg';
 import banner2 from '../../assets/introduction_page/banner2.jpg';
 import banner3 from '../../assets/introduction_page/banner3.jpg';
-import '../../home/main/main.css';
+import './main.css';
 const Intro = () => {
 	// SEARCH HERE
 	const [searchWords, setSearchWords] = useState('');

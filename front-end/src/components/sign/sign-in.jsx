@@ -113,8 +113,6 @@ const SignIn = ({
 				<button onClick={handleShowLoginForm} className="square-16 exit-button">
 					<img src={exit} alt="exit" />
 				</button>
-
-				<div className="title-sign-in">Đăng nhập hoặc tạo tài khoản mới</div>
 				{error && showErrMsg(error)}
 				<div>
 					<div className={validEmail ? 'input-box' : 'wrong-input-format'}>

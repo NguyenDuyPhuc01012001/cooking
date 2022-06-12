@@ -25,13 +25,9 @@ const contractAddressLink = '/upcoming';
 
 let navbarItems = [
 	{
-		displayName: 'Tin tức',
+		displayName: 'Mẹo vặt',
 		link: newsLink,
 		dropDownItems: [
-			{
-				displayName: 'Covid-19',
-				link: '/upcoming',
-			},
 			{
 				displayName: 'Mẹo vặt',
 				link: '/upcoming',
