@@ -7,7 +7,7 @@ import { LoadRecipeBySearch } from '../../redux/action';
 import './category.css';
 
 function Search() {
-	const findBySearchLink = '/user/search';
+	const findBySearchLink = '/user/searched';
 	function useQuery() {
 		const { search } = useLocation();
 
@@ -70,13 +70,13 @@ function Search() {
 	return (
 		<Fragment>
 			{/* <Type /> */}
-			<div className="wrapper">
-				<div className="body__container ">
-					<div className="grid_recipes">
+			<div className='wrapper'>
+				<div className='body__container '>
+					<div className='grid_recipes'>
 						{dataRecipeBySearch.length !== 0 ? (
 							dataRecipeBySearch.map((item, index) => {
 								return (
-									<div className="card_recipe" key={index}>
+									<div className='card_recipe' key={index}>
 										<Link to={'/user/recipe/' + item._id}>
 											<img
 												src={item.pictures.length > 0 ? item.pictures[0] : ''}
@@ -88,23 +88,23 @@ function Search() {
 								);
 							})
 						) : (
-							<h4 className="not_found_recipe">
+							<h4 className='not_found_recipe'>
 								Không có công thức nào phù hợp với nhu cầu của bạn
 							</h4>
 						)}
 					</div>
-					<div className="center">
-						<div className="pagination">
+					<div className='center'>
+						<div className='pagination'>
 							<ReactPaginate
-								breakLabel="..."
-								nextLabel={<i className="fas fa-chevron-right"></i>}
+								breakLabel='...'
+								nextLabel={<i className='fas fa-chevron-right'></i>}
 								onPageChange={handlePageClick}
 								pageRangeDisplayed={2}
 								marginPagesDisplayed={2}
 								pageCount={pageCount}
-								previousLabel={<i className="fas fa-chevron-left"></i>}
+								previousLabel={<i className='fas fa-chevron-left'></i>}
 								renderOnZeroPageCount={null}
-								activeClassName="active"
+								activeClassName='active'
 								forcePage={parseInt(currentPage)}
 							/>
 						</div>
