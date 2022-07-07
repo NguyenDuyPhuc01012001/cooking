@@ -59,29 +59,29 @@ Các chức năng chung:
 
 ### 1. Authentication
 
-Login In|Forget Password
+Đăng nhập|Quên mật khẩu
 :-------------------------:|:-------------------------:
-<img src="/assets/login.png" width="400" height="400"/>|<img src="/assets/forgot.png" width="400" height="400" />
+<img src="/assets/login.png" width="400" />|<img src="/assets/forgot.png" width="400"/>
 
 ### 2. Trang chủ
 
-<img src="/assets/home.png" width="500" height="800"/>
+<img src="/assets/home.png" width="500" />
 
 #### 2.1. Tìm kiếm
 
-<img src="/assets/search.png" width="500" height="800" />
+<img src="/assets/search.png" width="500" />
 
 #### 2.2. Công thức nấu ăn
 
-<img src="/assets/recipe.png" width="500" height="800" />
+<img src="/assets/recipe.png" width="500" />
 
 #### 2.3. Đăng công thức nấu ăn
 
-<img src="/assets/post.png" width="500" height="800" />
+<img src="/assets/post.png" width="500" />
 
 ### 3. Thông tin công ty
 
-<img src="/assets/info.png" width="500" height="800" />
+<img src="/assets/info.png" width="500" />
 
 ### 4. Trang quản lý
 
@@ -90,7 +90,7 @@ Login In|Forget Password
 |1|Quản lý bài đăng|<img src="/assets/manage_post.png" width="400"/>|
 |2|Quản lý thông tin công ty|<img src="/assets/manage_info.png" width="400"/>|
 |3|Quản lý tài khoản|<img src="/assets/manage_account.png" width="400"/>|
-|4|Tạo tài khoản|<img src="/assets/login.png" width="400"/>|
+|4|Tạo tài khoản|<img src="/assets/create_account.png" width="400"/>|
 |5|Quản lý thông tin cá nhân|<img src="/assets/edit_info.png" width="400"/>|
 
 <a  name="lienhe"></a>
